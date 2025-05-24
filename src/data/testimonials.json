@@ -1,0 +1,43 @@
+
+{
+  "en": [
+    {
+      "name": "Sarah Johnson",
+      "role": "Product Manager at TechCorp",
+      "text": "John delivered exceptional work on our project. His attention to detail and technical expertise made all the difference.",
+      "avatar": "/avatars/sarah.jpg"
+    },
+    {
+      "name": "Ahmed Hassan",
+      "role": "CTO at StartupXYZ",
+      "text": "Working with John was a pleasure. He consistently delivered high-quality code and met all deadlines.",
+      "avatar": "/avatars/ahmed.jpg"
+    },
+    {
+      "name": "Emily Chen",
+      "role": "Lead Designer at CreativeStudio",
+      "text": "John's ability to translate design concepts into functional code is remarkable. Highly recommended!",
+      "avatar": "/avatars/emily.jpg"
+    }
+  ],
+  "ar": [
+    {
+      "name": "سارة جونسون",
+      "role": "مدير المنتج في TechCorp",
+      "text": "قدم جون عملاً استثنائياً في مشروعنا. اهتمامه بالتفاصيل وخبرته التقنية أحدثت الفرق.",
+      "avatar": "/avatars/sarah.jpg"
+    },
+    {
+      "name": "أحمد حسان",
+      "role": "المدير التقني في StartupXYZ",
+      "text": "العمل مع جون كان ممتعاً. قدم باستمرار كود عالي الجودة والتزم بجميع المواعيد النهائية.",
+      "avatar": "/avatars/ahmed.jpg"
+    },
+    {
+      "name": "إيميلي تشين",
+      "role": "مصمم رئيسي في CreativeStudio",
+      "text": "قدرة جون على ترجمة مفاهيم التصميم إلى كود وظيفي رائعة. أنصح به بشدة!",
+      "avatar": "/avatars/emily.jpg"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+
+{
+  "en": [
+    {
+      "group": "Frontend",
+      "icons": ["React", "Angular", "Vue.js", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"]
+    },
+    {
+      "group": "Backend",
+      "icons": ["Node.js", "Express", "Python", "Django", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "group": "Tools & DevOps",
+      "icons": ["Git", "Docker", "AWS", "GitHub Actions", "Figma", "VS Code"]
+    }
+  ],
+  "ar": [
+    {
+      "group": "الواجهة الأمامية",
+      "icons": ["React", "Angular", "Vue.js", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"]
+    },
+    {
+      "group": "الخادم الخلفي",
+      "icons": ["Node.js", "Express", "Python", "Django", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "group": "الأدوات والنشر",
+      "icons": ["Git", "Docker", "AWS", "GitHub Actions", "Figma", "VS Code"]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+
+{
+  "en": [
+    {
+      "slug": "ecommerce-platform",
+      "name": "E-Commerce Platform",
+      "logo": "/projects/ecommerce.svg",
+      "summary": "Modern e-commerce solution with advanced features",
+      "tech": ["React", "Node.js", "PostgreSQL", "Stripe"],
+      "repo": "https://github.com/example/ecommerce",
+      "demo": "https://ecommerce-demo.example.com",
+      "cover": "/projects/ecommerce-cover.jpg",
+      "category": "fullstack"
+    },
+    {
+      "slug": "dashboard-app",
+      "name": "Analytics Dashboard",
+      "logo": "/projects/dashboard.svg",
+      "summary": "Real-time analytics dashboard with data visualization",
+      "tech": ["React", "D3.js", "WebSocket", "Express"],
+      "repo": "https://github.com/example/dashboard",
+      "demo": "https://dashboard-demo.example.com",
+      "cover": "/projects/dashboard-cover.jpg",
+      "category": "frontend"
+    },
+    {
+      "slug": "mobile-app",
+      "name": "Task Manager App",
+      "logo": "/projects/taskmanager.svg",
+      "summary": "Cross-platform task management application",
+      "tech": ["React Native", "Firebase", "Redux", "TypeScript"],
+      "repo": "https://github.com/example/taskmanager",
+      "demo": "https://taskmanager-demo.example.com",
+      "cover": "/projects/taskmanager-cover.jpg",
+      "category": "mobile"
+    }
+  ],
+  "ar": [
+    {
+      "slug": "ecommerce-platform",
+      "name": "منصة التجارة الإلكترونية",
+      "logo": "/projects/ecommerce.svg",
+      "summary": "حل تجارة إلكترونية حديث بميزات متقدمة",
+      "tech": ["React", "Node.js", "PostgreSQL", "Stripe"],
+      "repo": "https://github.com/example/ecommerce",
+      "demo": "https://ecommerce-demo.example.com",
+      "cover": "/projects/ecommerce-cover.jpg",
+      "category": "fullstack"
+    },
+    {
+      "slug": "dashboard-app",
+      "name": "لوحة التحليلات",
+      "logo": "/projects/dashboard.svg",
+      "summary": "لوحة تحليلات في الوقت الفعلي مع تصور البيانات",
+      "tech": ["React", "D3.js", "WebSocket", "Express"],
+      "repo": "https://github.com/example/dashboard",
+      "demo": "https://dashboard-demo.example.com",
+      "cover": "/projects/dashboard-cover.jpg",
+      "category": "frontend"
+    },
+    {
+      "slug": "mobile-app",
+      "name": "تطبيق إدارة المهام",
+      "logo": "/projects/taskmanager.svg",
+      "summary": "تطبيق إدارة مهام متعدد المنصات",
+      "tech": ["React Native", "Firebase", "Redux", "TypeScript"],
+      "repo": "https://github.com/example/taskmanager",
+      "demo": "https://taskmanager-demo.example.com",
+      "cover": "/projects/taskmanager-cover.jpg",
+      "category": "mobile"
+    }
+  ]
+}

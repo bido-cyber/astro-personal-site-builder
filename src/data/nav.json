@@ -1,0 +1,15 @@
+
+{
+  "en": [
+    { "text": "Home", "href": "/" },
+    { "text": "Projects", "href": "/projects" },
+    { "text": "Blog", "href": "/blog" },
+    { "text": "Contact", "href": "#contact" }
+  ],
+  "ar": [
+    { "text": "الرئيسية", "href": "/" },
+    { "text": "المشاريع", "href": "/projects" },
+    { "text": "المدونة", "href": "/blog" },
+    { "text": "تواصل", "href": "#contact" }
+  ]
+}
