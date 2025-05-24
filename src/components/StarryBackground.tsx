@@ -91,7 +91,7 @@ export function StarryBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+      className="fixed inset-0 -z-10 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950"
       style={{ pointerEvents: 'none' }}
     />
   );

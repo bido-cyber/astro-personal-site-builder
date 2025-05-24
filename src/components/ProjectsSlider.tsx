@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ProjectCard } from './ProjectCard';
@@ -9,6 +9,15 @@ export function ProjectsSlider() {
   const { language, isRTL } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const projects = projectsData[language];
+
+  // Auto-advance every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [projects.length]);
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);

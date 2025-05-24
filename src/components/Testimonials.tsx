@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import testimonialsData from '../data/testimonials.json';
@@ -8,6 +8,15 @@ export function Testimonials() {
   const { language, isRTL } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const testimonials = testimonialsData[language];
+
+  // Auto-advance every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -35,7 +44,7 @@ export function Testimonials() {
 
         {/* Testimonial Carousel */}
         <div className="relative">
-          <div className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
             <div className="text-center space-y-6">
               {/* Quote */}
               <blockquote className="text-xl text-white leading-relaxed">

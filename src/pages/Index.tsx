@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
-import { ThemeProvider } from '../contexts/ThemeContext';
 import { StarryBackground } from '../components/StarryBackground';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
@@ -13,22 +12,20 @@ import { Footer } from '../components/Footer';
 
 const Index = () => {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <div className="min-h-screen relative">
-          <StarryBackground />
-          <Navbar />
-          <main>
-            <Hero />
-            <Skills />
-            <ProjectsSlider />
-            <Testimonials />
-            <Contact />
-          </main>
-          <Footer />
-        </div>
-      </LanguageProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <div className="min-h-screen relative">
+        <StarryBackground />
+        <Navbar />
+        <main>
+          <Hero />
+          <Skills />
+          <ProjectsSlider />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 };
 
