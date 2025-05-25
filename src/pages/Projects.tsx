@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
-import { Navigation } from '../components/Navigation';
+import { SharedNavigation } from '../components/SharedNavigation';
 import { Footer } from '../components/Footer';
 import { ProjectCard } from '../components/ProjectCard';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -35,7 +35,7 @@ function ProjectsContent() {
   return (
     <div className="min-h-screen relative">
       <StarryBackground />
-      <Navigation />
+      <SharedNavigation />
       
       <main className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ function ProjectsContent() {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
+              <ProjectCard key={index} project={project} language={language} />
             ))}
           </div>
         </div>
