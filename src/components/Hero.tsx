@@ -15,44 +15,14 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+    <section className="min-h-[80vh] flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
-          {/* Content */}
-          <div className={`space-y-8 ${isRTL ? 'lg:col-start-2 text-right' : 'text-left'}`}>
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  {content.tagline}
-                </span>
-              </h1>
-              <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                {content.bio}
-              </p>
-            </div>
-
-            <div className={`flex flex-col sm:flex-row gap-4 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
-              <a
-                href="/cv.pdf"
-                download
-                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
-              >
-                {language === 'en' ? 'Download CV' : 'تحميل السيرة الذاتية'}
-              </a>
-              <button
-                onClick={scrollToContact}
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-white/20 text-base font-medium rounded-lg text-white hover:bg-white/10 transition-all duration-200"
-              >
-                {language === 'en' ? 'Get In Touch' : 'تواصل معي'}
-              </button>
-            </div>
-          </div>
-
-          {/* Portrait */}
-          <div className={`flex justify-center ${isRTL ? 'lg:col-start-1' : ''}`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
+          {/* Portrait - Mobile First */}
+          <div className={`flex justify-center order-1 lg:order-none ${isRTL ? 'lg:col-start-1' : ''}`}>
             <div className="relative">
               <div 
-                className="w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-2xl"
+                className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-2xl"
                 style={{
                   clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
                 }}
@@ -64,6 +34,36 @@ export function Hero() {
                 />
               </div>
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full blur-xl opacity-30 -z-10"></div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className={`space-y-6 lg:space-y-8 order-2 lg:order-none ${isRTL ? 'lg:col-start-2 text-right' : 'text-left'} text-center lg:text-${isRTL ? 'right' : 'left'}`}>
+            <div className="space-y-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  {content.tagline}
+                </span>
+              </h1>
+              <p className="text-lg lg:text-xl text-slate-300 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                {content.bio}
+              </p>
+            </div>
+
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
+              <a
+                href="/cv.pdf"
+                download
+                className="inline-flex items-center justify-center px-6 lg:px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+              >
+                {language === 'en' ? 'Download CV' : 'تحميل السيرة الذاتية'}
+              </a>
+              <button
+                onClick={scrollToContact}
+                className="inline-flex items-center justify-center px-6 lg:px-8 py-3 border-2 border-white/20 text-base font-medium rounded-lg text-white hover:bg-white/10 transition-all duration-200"
+              >
+                {language === 'en' ? 'Get In Touch' : 'تواصل معي'}
+              </button>
             </div>
           </div>
         </div>

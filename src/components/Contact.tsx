@@ -1,197 +1,221 @@
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Youtube, CheckCircle, XCircle } from 'lucide-react';
+import { Send, Github, Linkedin, Youtube, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import contactData from '../data/contact.json';
 
 export function Contact() {
   const { language, isRTL } = useLanguage();
-  const content = contactData[language];
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [feedbackType, setFeedbackType] = useState<'success' | 'error'>('success');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    
+    setIsSubmitting(true);
+    setFeedback(null);
+
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Replace with your Google Form URL
+      const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
       
-      // Show success feedback
-      setFeedbackType('success');
-      setShowFeedback(true);
+      const formDataToSend = new FormData();
+      formDataToSend.append('entry.NAME_FIELD_ID', formData.name);
+      formDataToSend.append('entry.EMAIL_FIELD_ID', formData.email);
+      formDataToSend.append('entry.MESSAGE_FIELD_ID', formData.message);
+
+      await fetch(googleFormUrl, {
+        method: 'POST',
+        body: formDataToSend,
+        mode: 'no-cors'
+      });
+
+      setFeedback({
+        type: 'success',
+        message: language === 'en' ? 'Message sent successfully!' : 'تم إرسال الرسالة بنجاح!'
+      });
+      
       setFormData({ name: '', email: '', message: '' });
-      
-      // Hide feedback after 5 seconds
-      setTimeout(() => setShowFeedback(false), 5000);
     } catch (error) {
-      // Show error feedback
-      setFeedbackType('error');
-      setShowFeedback(true);
-      
-      // Hide feedback after 5 seconds
-      setTimeout(() => setShowFeedback(false), 5000);
+      setFeedback({
+        type: 'error',
+        message: language === 'en' ? 'Failed to send message. Please try again.' : 'فشل في إرسال الرسالة. حاول مرة أخرى.'
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setFeedback(null), 5000);
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
 
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'github':
-        return <Github className="w-5 h-5" />;
-      case 'linkedin':
-        return <Linkedin className="w-5 h-5" />;
-      case 'youtube':
-        return <Youtube className="w-5 h-5" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            {content.title}
+            {language === 'en' ? 'Get In Touch' : 'تواصل معي'}
           </h2>
           <p className="text-slate-300 text-lg">
-            {content.subtitle}
+            {language === 'en' 
+              ? 'Have a project in mind? Let\'s work together!'
+              : 'لديك مشروع في ذهنك؟ لنعمل معاً!'
+            }
           </p>
         </div>
 
-        {/* Feedback Messages */}
-        {showFeedback && (
-          <div className={`mb-6 p-4 rounded-lg animate-slide-in-down ${
-            feedbackType === 'success' 
-              ? 'bg-green-500/20 border border-green-500/50 text-green-100' 
-              : 'bg-red-500/20 border border-red-500/50 text-red-100'
-          }`}>
-            <div className="flex items-center space-x-3">
-              {feedbackType === 'success' ? (
-                <CheckCircle className="w-5 h-5 text-green-400" />
-              ) : (
-                <XCircle className="w-5 h-5 text-red-400" />
-              )}
-              <span>
-                {feedbackType === 'success' 
-                  ? (language === 'en' ? 'Message sent successfully! I\'ll get back to you soon.' : 'تم إرسال الرسالة بنجاح! سأرد عليك قريباً.')
-                  : (language === 'en' ? 'Failed to send message. Please try again.' : 'فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى.')
-                }
-              </span>
-            </div>
-          </div>
-        )}
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                  {content.form.name}
+                <label htmlFor="name" className="block text-white font-medium mb-2">
+                  {language === 'en' ? 'Name' : 'الاسم'}
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
-                  placeholder={content.form.name}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder={language === 'en' ? 'Your name' : 'اسمك'}
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                  {content.form.email}
+                <label htmlFor="email" className="block text-white font-medium mb-2">
+                  {language === 'en' ? 'Email' : 'البريد الإلكتروني'}
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
-                  placeholder={content.form.email}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder={language === 'en' ? 'your@email.com' : 'بريدك@الإلكتروني.com'}
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                  {content.form.message}
+                <label htmlFor="message" className="block text-white font-medium mb-2">
+                  {language === 'en' ? 'Message' : 'الرسالة'}
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all resize-none"
-                  placeholder={content.form.message}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none"
+                  placeholder={language === 'en' ? 'Tell me about your project...' : 'أخبرني عن مشروعك...'}
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
+                disabled={isSubmitting}
+                className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
               >
-                {content.form.submit}
+                {isSubmitting ? (
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    <span>{language === 'en' ? 'Send Message' : 'إرسال الرسالة'}</span>
+                  </>
+                )}
               </button>
             </form>
+
+            {/* Feedback Message */}
+            {feedback && (
+              <div className={`mt-4 p-4 rounded-lg flex items-center animate-slide-in-down ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} ${
+                feedback.type === 'success' 
+                  ? 'bg-green-500/20 border border-green-500/30 text-green-300' 
+                  : 'bg-red-500/20 border border-red-500/30 text-red-300'
+              }`}>
+                {feedback.type === 'success' ? (
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                ) : (
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                )}
+                <span>{feedback.message}</span>
+              </div>
+            )}
           </div>
 
-          {/* Social Links */}
+          {/* Connect With Me */}
           <div className="space-y-8">
-            <div className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
-              <h3 className="text-xl font-semibold text-white mb-6">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">
                 {language === 'en' ? 'Connect With Me' : 'تواصل معي'}
               </h3>
+              
               <div className="space-y-4">
-                {content.social.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200 group ${
-                      isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'
-                    }`}
-                  >
-                    <div className="text-white group-hover:text-blue-400 transition-colors">
-                      {getIcon(social.icon)}
-                    </div>
-                    <span className="text-white group-hover:text-blue-400 transition-colors">
-                      {social.name}
-                    </span>
-                  </a>
-                ))}
+                <a
+                  href="https://github.com/johndoe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                >
+                  <Github className="w-6 h-6 flex-shrink-0" />
+                  <span>GitHub</span>
+                </a>
+                
+                <a
+                  href="https://linkedin.com/in/johndoe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                >
+                  <Linkedin className="w-6 h-6 flex-shrink-0" />
+                  <span>LinkedIn</span>
+                </a>
+                
+                <a
+                  href="https://youtube.com/@johndoe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                >
+                  <Youtube className="w-6 h-6 flex-shrink-0" />
+                  <span>YouTube</span>
+                </a>
+                
+                <a
+                  href="https://t.me/johndoe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                >
+                  <MessageCircle className="w-6 h-6 flex-shrink-0" />
+                  <span>Telegram</span>
+                </a>
               </div>
             </div>
 
-            <div className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
-              <h3 className="text-xl font-semibold text-white mb-4">
-                {language === 'en' ? 'Quick Info' : 'معلومات سريعة'}
-              </h3>
-              <div className="space-y-3 text-slate-300">
-                <p>📍 {language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}</p>
-                <p>💼 {language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}</p>
-                <p>🕒 {language === 'en' ? 'Usually responds within 24 hours' : 'عادة ما أرد خلال 24 ساعة'}</p>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20">
+              <div className="text-center">
+                <div className="text-white font-medium mb-2">
+                  {language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}
+                </div>
+                <div className="text-slate-300">
+                  {language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}
+                </div>
               </div>
             </div>
           </div>
