@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
-import { SharedNavigation } from '../components/SharedNavigation';
+import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { ProjectCard } from '../components/ProjectCard';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -35,7 +34,7 @@ function ProjectsContent() {
   return (
     <div className="min-h-screen relative">
       <StarryBackground />
-      <SharedNavigation />
+      <Navigation />
       
       <main className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
