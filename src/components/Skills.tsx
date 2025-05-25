@@ -23,16 +23,16 @@ export function Skills() {
           </p>
         </div>
 
-        {/* Skills Groups */}
-        <div className="space-y-8">
+        {/* Skills in single row on large screens, columns on small */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {skills.map((skillGroup, index) => (
             <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20">
-              <h3 className="text-xl font-semibold text-white mb-4 text-center">
+              <h3 className="text-xl font-semibold text-white mb-6 text-center">
                 {skillGroup.group}
               </h3>
               
               {/* Skills Grid */}
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {skillGroup.icons.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
@@ -41,13 +41,12 @@ export function Skills() {
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-10 h-10 mb-2 group-hover:scale-110 transition-transform duration-200"
+                      className="w-8 h-8 mb-2 group-hover:scale-110 transition-transform duration-200"
                       onError={(e) => {
-                        // Fallback to placeholder if image fails to load
-                        (e.target as HTMLImageElement).src = `https://via.placeholder.com/40/666/fff?text=${skill.name.charAt(0)}`;
+                        (e.target as HTMLImageElement).src = `https://via.placeholder.com/32/666/fff?text=${skill.name.charAt(0)}`;
                       }}
                     />
-                    <span className="text-sm text-slate-300 group-hover:text-white transition-colors duration-200 text-center">
+                    <span className="text-xs text-slate-300 group-hover:text-white transition-colors duration-200 text-center">
                       {skill.name}
                     </span>
                   </div>

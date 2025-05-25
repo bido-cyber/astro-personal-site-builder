@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
-import { Navbar } from '../components/Navbar';
+import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -18,8 +18,8 @@ function BlogPostContent() {
   useEffect(() => {
     const loadPost = async () => {
       try {
-        // Load markdown content
-        const response = await fetch(`/src/content/blog/${slug}.md`);
+        // Load markdown content from public folder
+        const response = await fetch(`/content/blog/${slug}.md`);
         const text = await response.text();
         
         // Parse frontmatter (simple implementation)
@@ -76,7 +76,7 @@ function BlogPostContent() {
   return (
     <div className="min-h-screen relative">
       <StarryBackground />
-      <Navbar />
+      <Navigation />
       
       <main className="pt-24 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
