@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -51,7 +51,7 @@
   }
 
   [dir="rtl"] body {
-    font-family: 'Noto Sans Arabic', system-ui, -apple-system, sans-serif;
+    font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
   }
 
   html {
@@ -114,4 +114,20 @@
 [dir="rtl"] .space-x-2 > * + * {
   margin-right: 0.5rem;
   margin-left: 0;
+}
+
+/* Contact form animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.3s ease-out;
 }

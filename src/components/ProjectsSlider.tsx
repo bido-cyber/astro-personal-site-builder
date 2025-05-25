@@ -47,7 +47,7 @@ export function ProjectsSlider() {
         <div className="relative">
           {/* Navigation Arrows */}
           <button
-            onClick={isRTL ? nextProject : prevProject}
+            onClick={prevProject}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group"
             disabled={projects.length <= 1}
           >
@@ -55,7 +55,7 @@ export function ProjectsSlider() {
           </button>
 
           <button
-            onClick={isRTL ? prevProject : nextProject}
+            onClick={nextProject}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group"
             disabled={projects.length <= 1}
           >
@@ -66,7 +66,11 @@ export function ProjectsSlider() {
           <div className="overflow-hidden rounded-2xl">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              style={{ 
+                transform: isRTL 
+                  ? `translateX(${currentIndex * 100}%)` 
+                  : `translateX(-${currentIndex * 100}%)`
+              }}
             >
               {projects.map((project, index) => (
                 <div key={project.slug} className="w-full flex-shrink-0 px-4">

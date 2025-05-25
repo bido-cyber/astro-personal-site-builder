@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Youtube } from 'lucide-react';
+import { Github, Linkedin, Youtube, CheckCircle, XCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import contactData from '../data/contact.json';
 
@@ -12,13 +12,32 @@ export function Contact() {
     email: '',
     message: ''
   });
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [feedbackType, setFeedbackType] = useState<'success' | 'error'>('success');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with your form handling service
     console.log('Form submitted:', formData);
-    alert(language === 'en' ? 'Message sent! I\'ll get back to you soon.' : 'تم إرسال الرسالة! سأرد عليك قريباً.');
-    setFormData({ name: '', email: '', message: '' });
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Show success feedback
+      setFeedbackType('success');
+      setShowFeedback(true);
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Hide feedback after 5 seconds
+      setTimeout(() => setShowFeedback(false), 5000);
+    } catch (error) {
+      // Show error feedback
+      setFeedbackType('error');
+      setShowFeedback(true);
+      
+      // Hide feedback after 5 seconds
+      setTimeout(() => setShowFeedback(false), 5000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,6 +71,29 @@ export function Contact() {
             {content.subtitle}
           </p>
         </div>
+
+        {/* Feedback Messages */}
+        {showFeedback && (
+          <div className={`mb-6 p-4 rounded-lg animate-slide-in-down ${
+            feedbackType === 'success' 
+              ? 'bg-green-500/20 border border-green-500/50 text-green-100' 
+              : 'bg-red-500/20 border border-red-500/50 text-red-100'
+          }`}>
+            <div className="flex items-center space-x-3">
+              {feedbackType === 'success' ? (
+                <CheckCircle className="w-5 h-5 text-green-400" />
+              ) : (
+                <XCircle className="w-5 h-5 text-red-400" />
+              )}
+              <span>
+                {feedbackType === 'success' 
+                  ? (language === 'en' ? 'Message sent successfully! I\'ll get back to you soon.' : 'تم إرسال الرسالة بنجاح! سأرد عليك قريباً.')
+                  : (language === 'en' ? 'Failed to send message. Please try again.' : 'فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى.')
+                }
+              </span>
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
@@ -127,7 +169,9 @@ export function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200 group"
+                    className={`flex items-center p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200 group ${
+                      isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'
+                    }`}
                   >
                     <div className="text-white group-hover:text-blue-400 transition-colors">
                       {getIcon(social.icon)}

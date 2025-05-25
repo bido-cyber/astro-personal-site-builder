@@ -52,7 +52,7 @@ export function Testimonials() {
               </blockquote>
 
               {/* Author */}
-              <div className="flex items-center justify-center space-x-4">
+              <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
                 <img
                   src={testimonials[currentIndex].avatar || "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"}
                   alt={testimonials[currentIndex].name}
@@ -73,7 +73,7 @@ export function Testimonials() {
           {/* Navigation */}
           <div className="flex justify-center items-center space-x-4 mt-8">
             <button
-              onClick={isRTL ? nextTestimonial : prevTestimonial}
+              onClick={prevTestimonial}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
               disabled={testimonials.length <= 1}
             >
@@ -95,7 +95,7 @@ export function Testimonials() {
             </div>
 
             <button
-              onClick={isRTL ? prevTestimonial : nextTestimonial}
+              onClick={nextTestimonial}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
               disabled={testimonials.length <= 1}
             >

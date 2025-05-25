@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Earth } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import navData from '../data/nav.json';
 
@@ -72,9 +73,10 @@ export function Navbar() {
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className="px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20"
+              className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20"
             >
-              {language === 'en' ? 'AR' : 'EN'}
+              <Earth className="w-4 h-4" />
+              <span>{language === 'en' ? 'AR' : 'EN'}</span>
             </button>
 
             {/* Mobile menu button */}

@@ -2,14 +2,16 @@
 {
   "en": [
     { "text": "Home", "href": "/" },
+    { "text": "Skills", "href": "#skills" },
     { "text": "Projects", "href": "/projects" },
     { "text": "Blog", "href": "/blog" },
     { "text": "Contact", "href": "#contact" }
   ],
   "ar": [
     { "text": "الرئيسية", "href": "/" },
+    { "text": "المهارات", "href": "#skills" },
     { "text": "المشاريع", "href": "/projects" },
     { "text": "المدونة", "href": "/blog" },
-    { "text": "تواصل", "href": "#contact" }
+    { "text": "اتصل بي", "href": "#contact" }
   ]
 }
