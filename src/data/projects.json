@@ -10,8 +10,7 @@
       "repo": "https://github.com/example/ecommerce",
       "demo": "https://ecommerce-demo.example.com",
       "cover": "/projects/ecommerce-cover.jpg",
-      "category": "fullstack",
-      "featured": true
+      "category": "fullstack"
     },
     {
       "slug": "dashboard-app",
@@ -22,8 +21,7 @@
       "repo": "https://github.com/example/dashboard",
       "demo": "https://dashboard-demo.example.com",
       "cover": "/projects/dashboard-cover.jpg",
-      "category": "frontend",
-      "featured": true
+      "category": "frontend"
     },
     {
       "slug": "mobile-app",
@@ -34,20 +32,7 @@
       "repo": "https://github.com/example/taskmanager",
       "demo": "https://taskmanager-demo.example.com",
       "cover": "/projects/taskmanager-cover.jpg",
-      "category": "mobile",
-      "featured": false
-    },
-    {
-      "slug": "portfolio-website",
-      "name": "Portfolio Website",
-      "logo": "/projects/portfolio.svg",
-      "summary": "Responsive portfolio website with modern design",
-      "tech": ["React", "Tailwind", "Framer Motion"],
-      "repo": "https://github.com/example/portfolio",
-      "demo": "https://portfolio-demo.example.com",
-      "cover": "/projects/portfolio-cover.jpg",
-      "category": "frontend",
-      "featured": false
+      "category": "mobile"
     }
   ],
   "ar": [
@@ -60,8 +45,7 @@
       "repo": "https://github.com/example/ecommerce",
       "demo": "https://ecommerce-demo.example.com",
       "cover": "/projects/ecommerce-cover.jpg",
-      "category": "fullstack",
-      "featured": true
+      "category": "fullstack"
     },
     {
       "slug": "dashboard-app",
@@ -72,8 +56,7 @@
       "repo": "https://github.com/example/dashboard",
       "demo": "https://dashboard-demo.example.com",
       "cover": "/projects/dashboard-cover.jpg",
-      "category": "frontend",
-      "featured": true
+      "category": "frontend"
     },
     {
       "slug": "mobile-app",
@@ -84,20 +67,7 @@
       "repo": "https://github.com/example/taskmanager",
       "demo": "https://taskmanager-demo.example.com",
       "cover": "/projects/taskmanager-cover.jpg",
-      "category": "mobile",
-      "featured": false
-    },
-    {
-      "slug": "portfolio-website",
-      "name": "موقع المحفظة",
-      "logo": "/projects/portfolio.svg",
-      "summary": "موقع محفظة متجاوب بتصميم حديث",
-      "tech": ["React", "Tailwind", "Framer Motion"],
-      "repo": "https://github.com/example/portfolio",
-      "demo": "https://portfolio-demo.example.com",
-      "cover": "/projects/portfolio-cover.jpg",
-      "category": "frontend",
-      "featured": false
+      "category": "mobile"
     }
   ]
 }

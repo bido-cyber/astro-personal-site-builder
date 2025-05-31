@@ -8,25 +8,23 @@ import projectsData from '../data/projects.json';
 export function ProjectsSlider() {
   const { language, isRTL } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  // Filter only featured projects
-  const featuredProjects = projectsData[language].filter(project => project.featured === true);
+  const projects = projectsData[language];
 
   // Auto-advance every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % featuredProjects.length);
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [featuredProjects.length]);
+  }, [projects.length]);
 
   const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % featuredProjects.length);
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
@@ -49,25 +47,19 @@ export function ProjectsSlider() {
         <div className="relative">
           {/* Navigation Arrows */}
           <button
-            onClick={isRTL ? nextProject : prevProject}
-            className={`absolute ${isRTL ? 'right-0 translate-x-4' : 'left-0 -translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
-            disabled={featuredProjects.length <= 1}
+            onClick={prevProject}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group"
+            disabled={projects.length <= 1}
           >
-            {isRTL ? 
-              <ArrowRight className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" /> :
-              <ArrowLeft className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
-            }
+            <ArrowLeft className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
           </button>
 
           <button
-            onClick={isRTL ? prevProject : nextProject}
-            className={`absolute ${isRTL ? 'left-0 -translate-x-4' : 'right-0 translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
-            disabled={featuredProjects.length <= 1}
+            onClick={nextProject}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group"
+            disabled={projects.length <= 1}
           >
-            {isRTL ? 
-              <ArrowLeft className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" /> :
-              <ArrowRight className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
-            }
+            <ArrowRight className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
           </button>
 
           {/* Project Cards */}
@@ -80,7 +72,7 @@ export function ProjectsSlider() {
                   : `translateX(-${currentIndex * 100}%)`
               }}
             >
-              {featuredProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <div key={project.slug} className="w-full flex-shrink-0 px-4">
                   <div className="max-w-lg mx-auto">
                     <ProjectCard project={project} language={language} />
@@ -91,8 +83,8 @@ export function ProjectsSlider() {
           </div>
 
           {/* Dots Indicator */}
-          <div className={`flex justify-center mt-8 ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
-            {featuredProjects.map((_, index) => (
+          <div className="flex justify-center space-x-2 mt-8">
+            {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}

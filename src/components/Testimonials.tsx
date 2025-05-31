@@ -71,16 +71,16 @@ export function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className={`flex justify-center items-center mt-8 ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+          <div className="flex justify-center items-center space-x-4 mt-8">
             <button
-              onClick={isRTL ? nextTestimonial : prevTestimonial}
+              onClick={prevTestimonial}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
               disabled={testimonials.length <= 1}
             >
-              {isRTL ? <ArrowRight className="w-5 h-5 text-white" /> : <ArrowLeft className="w-5 h-5 text-white" />}
+              <ArrowLeft className="w-5 h-5 text-white" />
             </button>
 
-            <div className={`flex ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
+            <div className="flex space-x-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -95,11 +95,11 @@ export function Testimonials() {
             </div>
 
             <button
-              onClick={isRTL ? prevTestimonial : nextTestimonial}
+              onClick={nextTestimonial}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
               disabled={testimonials.length <= 1}
             >
-              {isRTL ? <ArrowLeft className="w-5 h-5 text-white" /> : <ArrowRight className="w-5 h-5 text-white" />}
+              <ArrowRight className="w-5 h-5 text-white" />
             </button>
           </div>
         </div>

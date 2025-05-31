@@ -49,7 +49,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className={`flex items-baseline ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+            <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -69,11 +69,11 @@ export function Navbar() {
           </div>
 
           {/* Language Controls */}
-          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+          <div className="flex items-center space-x-4">
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className={`flex items-center px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20 ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}
+              className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20"
             >
               <Earth className="w-4 h-4" />
               <span>{language === 'en' ? 'AR' : 'EN'}</span>
@@ -85,10 +85,10 @@ export function Navbar() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="p-2 rounded-lg bg-white/10 text-white border border-white/20"
               >
-                <div className="w-6 h-6 flex flex-col justify-center items-center relative">
-                  <span className={`bg-current h-0.5 w-6 transition-all duration-300 absolute ${isMobileMenuOpen ? 'rotate-45' : 'translate-y-[-4px]'}`}></span>
-                  <span className={`bg-current h-0.5 w-6 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                  <span className={`bg-current h-0.5 w-6 transition-all duration-300 absolute ${isMobileMenuOpen ? '-rotate-45' : 'translate-y-[4px]'}`}></span>
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                  <span className={`bg-current h-0.5 w-6 transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-0.5' : ''}`}></span>
+                  <span className={`bg-current h-0.5 w-6 my-1 transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                  <span className={`bg-current h-0.5 w-6 transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-0.5' : ''}`}></span>
                 </div>
               </button>
             </div>
