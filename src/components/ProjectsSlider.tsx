@@ -8,7 +8,10 @@ import projectsData from '../data/projects.json';
 export function ProjectsSlider() {
   const { language, isRTL } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const projects = projectsData[language];
+  
+  // Filter only featured projects
+  const allProjects = projectsData[language];
+  const projects = allProjects.filter(project => project.featured === true);
 
   // Auto-advance every 3 seconds
   useEffect(() => {
@@ -48,7 +51,7 @@ export function ProjectsSlider() {
           {/* Navigation Arrows */}
           <button
             onClick={prevProject}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group"
+            className={`absolute ${isRTL ? 'right-0 translate-x-4' : 'left-0 -translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
             disabled={projects.length <= 1}
           >
             <ArrowLeft className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
@@ -56,7 +59,7 @@ export function ProjectsSlider() {
 
           <button
             onClick={nextProject}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group"
+            className={`absolute ${isRTL ? 'left-0 -translate-x-4' : 'right-0 translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
             disabled={projects.length <= 1}
           >
             <ArrowRight className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />

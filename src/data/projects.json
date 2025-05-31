@@ -10,7 +10,8 @@
       "repo": "https://github.com/example/ecommerce",
       "demo": "https://ecommerce-demo.example.com",
       "cover": "/projects/ecommerce-cover.jpg",
-      "category": "fullstack"
+      "category": "fullstack",
+      "featured": true
     },
     {
       "slug": "dashboard-app",
@@ -21,7 +22,8 @@
       "repo": "https://github.com/example/dashboard",
       "demo": "https://dashboard-demo.example.com",
       "cover": "/projects/dashboard-cover.jpg",
-      "category": "frontend"
+      "category": "frontend",
+      "featured": false
     },
     {
       "slug": "mobile-app",
@@ -32,7 +34,8 @@
       "repo": "https://github.com/example/taskmanager",
       "demo": "https://taskmanager-demo.example.com",
       "cover": "/projects/taskmanager-cover.jpg",
-      "category": "mobile"
+      "category": "mobile",
+      "featured": true
     }
   ],
   "ar": [
@@ -45,7 +48,8 @@
       "repo": "https://github.com/example/ecommerce",
       "demo": "https://ecommerce-demo.example.com",
       "cover": "/projects/ecommerce-cover.jpg",
-      "category": "fullstack"
+      "category": "fullstack",
+      "featured": true
     },
     {
       "slug": "dashboard-app",
@@ -56,7 +60,8 @@
       "repo": "https://github.com/example/dashboard",
       "demo": "https://dashboard-demo.example.com",
       "cover": "/projects/dashboard-cover.jpg",
-      "category": "frontend"
+      "category": "frontend",
+      "featured": false
     },
     {
       "slug": "mobile-app",
@@ -67,7 +72,8 @@
       "repo": "https://github.com/example/taskmanager",
       "demo": "https://taskmanager-demo.example.com",
       "cover": "/projects/taskmanager-cover.jpg",
-      "category": "mobile"
+      "category": "mobile",
+      "featured": true
     }
   ]
 }

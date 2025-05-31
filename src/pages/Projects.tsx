@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { Search, Filter } from 'lucide-react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
-import { Navbar } from '../components/Navbar';
+import { SharedNavigation } from '../components/SharedNavigation';
 import { ProjectCard } from '../components/ProjectCard';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -49,7 +49,7 @@ function ProjectsContent() {
   return (
     <div className="min-h-screen relative">
       <StarryBackground />
-      <Navbar />
+      <SharedNavigation />
       
       <main className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

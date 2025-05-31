@@ -26,6 +26,12 @@ export function Testimonials() {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  // For Arabic, we reverse the arrow logic
+  const leftArrow = isRTL ? ArrowRight : ArrowLeft;
+  const rightArrow = isRTL ? ArrowLeft : ArrowRight;
+  const prevAction = isRTL ? nextTestimonial : prevTestimonial;
+  const nextAction = isRTL ? prevTestimonial : nextTestimonial;
+
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -47,7 +53,7 @@ export function Testimonials() {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
             <div className="text-center space-y-6">
               {/* Quote */}
-              <blockquote className="text-xl text-white leading-relaxed">
+              <blockquote className={`text-xl text-white leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
                 "{testimonials[currentIndex].text}"
               </blockquote>
 
@@ -71,13 +77,13 @@ export function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-center items-center space-x-4 mt-8">
+          <div className={`flex justify-center items-center mt-8 ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
             <button
-              onClick={prevTestimonial}
+              onClick={prevAction}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
               disabled={testimonials.length <= 1}
             >
-              <ArrowLeft className="w-5 h-5 text-white" />
+              {React.createElement(leftArrow, { className: "w-5 h-5 text-white" })}
             </button>
 
             <div className="flex space-x-2">
@@ -95,11 +101,11 @@ export function Testimonials() {
             </div>
 
             <button
-              onClick={nextTestimonial}
+              onClick={nextAction}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
               disabled={testimonials.length <= 1}
             >
-              <ArrowRight className="w-5 h-5 text-white" />
+              {React.createElement(rightArrow, { className: "w-5 h-5 text-white" })}
             </button>
           </div>
         </div>

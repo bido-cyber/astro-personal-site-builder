@@ -2,9 +2,10 @@
 import React from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
-import { Navbar } from '../components/Navbar';
+import { SharedNavigation } from '../components/SharedNavigation';
 import { Hero } from '../components/Hero';
 import { Skills } from '../components/Skills';
+import { EducationExperience } from '../components/EducationExperience';
 import { ProjectsSlider } from '../components/ProjectsSlider';
 import { Testimonials } from '../components/Testimonials';
 import { Contact } from '../components/Contact';
@@ -15,10 +16,11 @@ const Index = () => {
     <LanguageProvider>
       <div className="min-h-screen relative">
         <StarryBackground />
-        <Navbar />
+        <SharedNavigation />
         <main>
           <Hero />
           <Skills />
+          <EducationExperience />
           <ProjectsSlider />
           <Testimonials />
           <Contact />

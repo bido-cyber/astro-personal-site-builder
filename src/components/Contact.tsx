@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Youtube, CheckCircle, XCircle } from 'lucide-react';
+import { Github, Linkedin, Youtube, CheckCircle, XCircle, MapPin, Clock, Briefcase } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import contactData from '../data/contact.json';
 
@@ -14,14 +14,26 @@ export function Contact() {
   });
   const [showFeedback, setShowFeedback] = useState(false);
   const [feedbackType, setFeedbackType] = useState<'success' | 'error'>('success');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Google Form submission URL - replace with your actual form URL
+      const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append('entry.NAME_FIELD_ID', formData.name);
+      formDataToSend.append('entry.EMAIL_FIELD_ID', formData.email);
+      formDataToSend.append('entry.MESSAGE_FIELD_ID', formData.message);
+
+      await fetch(googleFormUrl, {
+        method: 'POST',
+        body: formDataToSend,
+        mode: 'no-cors'
+      });
       
       // Show success feedback
       setFeedbackType('success');
@@ -31,12 +43,15 @@ export function Contact() {
       // Hide feedback after 5 seconds
       setTimeout(() => setShowFeedback(false), 5000);
     } catch (error) {
+      console.error('Form submission error:', error);
       // Show error feedback
       setFeedbackType('error');
       setShowFeedback(true);
       
       // Hide feedback after 5 seconds
       setTimeout(() => setShowFeedback(false), 5000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -79,7 +94,7 @@ export function Contact() {
               ? 'bg-green-500/20 border border-green-500/50 text-green-100' 
               : 'bg-red-500/20 border border-red-500/50 text-red-100'
           }`}>
-            <div className="flex items-center space-x-3">
+            <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
               {feedbackType === 'success' ? (
                 <CheckCircle className="w-5 h-5 text-green-400" />
               ) : (
@@ -149,9 +164,13 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
               >
-                {content.form.submit}
+                {isSubmitting 
+                  ? (language === 'en' ? 'Sending...' : 'جاري الإرسال...')
+                  : content.form.submit
+                }
               </button>
             </form>
           </div>
@@ -169,14 +188,14 @@ export function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200 group ${
+                    className={`flex items-center p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 rounded-lg transition-all duration-200 group border border-white/10 hover:border-white/20 ${
                       isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'
                     }`}
                   >
-                    <div className="text-white group-hover:text-blue-400 transition-colors">
+                    <div className="text-white group-hover:text-blue-400 transition-colors bg-white/10 p-2 rounded-lg">
                       {getIcon(social.icon)}
                     </div>
-                    <span className="text-white group-hover:text-blue-400 transition-colors">
+                    <span className="text-white group-hover:text-blue-400 transition-colors font-medium">
                       {social.name}
                     </span>
                   </a>
@@ -185,13 +204,28 @@ export function Contact() {
             </div>
 
             <div className="bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
-              <h3 className="text-xl font-semibold text-white mb-4">
+              <h3 className="text-xl font-semibold text-white mb-6">
                 {language === 'en' ? 'Quick Info' : 'معلومات سريعة'}
               </h3>
-              <div className="space-y-3 text-slate-300">
-                <p>📍 {language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}</p>
-                <p>💼 {language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}</p>
-                <p>🕒 {language === 'en' ? 'Usually responds within 24 hours' : 'عادة ما أرد خلال 24 ساعة'}</p>
+              <div className="space-y-4 text-slate-300">
+                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+                  <div className="bg-white/10 p-2 rounded-lg">
+                    <MapPin className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <span>{language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}</span>
+                </div>
+                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+                  <div className="bg-white/10 p-2 rounded-lg">
+                    <Briefcase className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <span>{language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}</span>
+                </div>
+                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+                  <div className="bg-white/10 p-2 rounded-lg">
+                    <Clock className="w-5 h-5 text-green-400" />
+                  </div>
+                  <span>{language === 'en' ? 'Usually responds within 24 hours' : 'عادة ما أرد خلال 24 ساعة'}</span>
+                </div>
               </div>
             </div>
           </div>
