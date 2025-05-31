@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Send, Github, Linkedin, Youtube, MessageCircle, CheckCircle, AlertCircle, MapPin, Coffee } from 'lucide-react';
+import { Send, Github, Linkedin, Youtube, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export function Contact() {
@@ -19,13 +19,13 @@ export function Contact() {
     setFeedback(null);
 
     try {
-      // Google Form submission
-      const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/formResponse';
+      // Replace with your Google Form URL
+      const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
       
       const formDataToSend = new FormData();
-      formDataToSend.append('entry.1234567890', formData.name); // Replace with actual field IDs
-      formDataToSend.append('entry.0987654321', formData.email);
-      formDataToSend.append('entry.1122334455', formData.message);
+      formDataToSend.append('entry.NAME_FIELD_ID', formData.name);
+      formDataToSend.append('entry.EMAIL_FIELD_ID', formData.email);
+      formDataToSend.append('entry.MESSAGE_FIELD_ID', formData.message);
 
       await fetch(googleFormUrl, {
         method: 'POST',
@@ -170,70 +170,51 @@ export function Contact() {
                   href="https://github.com/johndoe"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all duration-200 group ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
                 >
-                  <div className="p-2 bg-gray-600 rounded-lg group-hover:bg-gray-500 transition-colors">
-                    <Github className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-slate-300 group-hover:text-white transition-colors">GitHub</span>
+                  <Github className="w-6 h-6 flex-shrink-0" />
+                  <span>GitHub</span>
                 </a>
                 
                 <a
                   href="https://linkedin.com/in/johndoe"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all duration-200 group ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
                 >
-                  <div className="p-2 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition-colors">
-                    <Linkedin className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-slate-300 group-hover:text-white transition-colors">LinkedIn</span>
+                  <Linkedin className="w-6 h-6 flex-shrink-0" />
+                  <span>LinkedIn</span>
                 </a>
                 
                 <a
                   href="https://youtube.com/@johndoe"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all duration-200 group ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
                 >
-                  <div className="p-2 bg-red-600 rounded-lg group-hover:bg-red-500 transition-colors">
-                    <Youtube className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-slate-300 group-hover:text-white transition-colors">YouTube</span>
+                  <Youtube className="w-6 h-6 flex-shrink-0" />
+                  <span>YouTube</span>
                 </a>
                 
                 <a
                   href="https://t.me/johndoe"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all duration-200 group ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
+                  className={`flex items-center text-slate-300 hover:text-blue-400 transition-colors ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
                 >
-                  <div className="p-2 bg-blue-500 rounded-lg group-hover:bg-blue-400 transition-colors">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-slate-300 group-hover:text-white transition-colors">Telegram</span>
+                  <MessageCircle className="w-6 h-6 flex-shrink-0" />
+                  <span>Telegram</span>
                 </a>
               </div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20">
-              <div className="space-y-4">
-                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
-                  <MapPin className="w-5 h-5 text-blue-400" />
-                  <div>
-                    <div className="text-white font-medium">
-                      {language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}
-                    </div>
-                    <div className="text-slate-300 text-sm">
-                      Cairo, Egypt
-                    </div>
-                  </div>
+              <div className="text-center">
+                <div className="text-white font-medium mb-2">
+                  {language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}
                 </div>
-                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
-                  <Coffee className="w-5 h-5 text-green-400" />
-                  <div className="text-slate-300">
-                    {language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}
-                  </div>
+                <div className="text-slate-300">
+                  {language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}
                 </div>
               </div>
             </div>

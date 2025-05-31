@@ -5,7 +5,6 @@ import { StarryBackground } from '../components/StarryBackground';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { Skills } from '../components/Skills';
-import { EducationExperience } from '../components/EducationExperience';
 import { ProjectsSlider } from '../components/ProjectsSlider';
 import { Testimonials } from '../components/Testimonials';
 import { Contact } from '../components/Contact';
@@ -20,7 +19,6 @@ const Index = () => {
         <main>
           <Hero />
           <Skills />
-          <EducationExperience />
           <ProjectsSlider />
           <Testimonials />
           <Contact />

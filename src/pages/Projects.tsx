@@ -1,79 +1,145 @@
-import React, { useState } from 'react';
+
+import React, { useState, useMemo } from 'react';
+import { Search, Filter } from 'lucide-react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
-import { Navigation } from '../components/Navigation';
-import { Footer } from '../components/Footer';
+import { Navbar } from '../components/Navbar';
 import { ProjectCard } from '../components/ProjectCard';
+import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import projectsData from '../data/projects.json';
 
 function ProjectsContent() {
   const { language } = useLanguage();
-  const [filter, setFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  
   const projects = projectsData[language];
 
-  const categories = {
-    en: {
-      all: 'All Projects',
-      frontend: 'Frontend',
-      fullstack: 'Full Stack',
-      mobile: 'Mobile'
-    },
-    ar: {
-      all: 'جميع المشاريع',
-      frontend: 'الواجهة الأمامية',
-      fullstack: 'التطوير الشامل',
-      mobile: 'تطبيقات الجوال'
-    }
-  };
+  // Get all unique tags
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    projects.forEach(project => {
+      project.tech.forEach(tech => tags.add(tech));
+    });
+    return Array.from(tags);
+  }, [projects]);
 
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  // Filter projects based on search and tags
+  const filteredProjects = useMemo(() => {
+    return projects.filter(project => {
+      const matchesSearch = project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          project.summary.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesTags = selectedTags.length === 0 || 
+                         selectedTags.some(tag => project.tech.includes(tag));
+      
+      return matchesSearch && matchesTags;
+    });
+  }, [projects, searchTerm, selectedTags]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
 
   return (
     <div className="min-h-screen relative">
       <StarryBackground />
-      <Navigation />
+      <Navbar />
       
       <main className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               {language === 'en' ? 'My Projects' : 'مشاريعي'}
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
               {language === 'en' 
-                ? 'A collection of projects that showcase my skills and experience in web development'
-                : 'مجموعة من المشاريع التي تعرض مهاراتي وخبرتي في تطوير المواقع'
+                ? 'Explore my portfolio of web applications, mobile apps, and open source contributions.'
+                : 'استكشف محفظة أعمالي من تطبيقات الويب وتطبيقات الجوال والمساهمات مفتوحة المصدر.'
               }
             </p>
           </div>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {Object.entries(categories[language]).map(([key, label]) => (
-              <button
-                key={key}
-                onClick={() => setFilter(key)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  filter === key
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                    : 'bg-white/10 text-slate-300 hover:bg-white/20 hover:text-white'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+          {/* Search and Filters */}
+          <div className="mb-12 space-y-6">
+            {/* Search */}
+            <div className="relative max-w-md mx-auto">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder={language === 'en' ? 'Search projects...' : 'البحث في المشاريع...'}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+              />
+            </div>
+
+            {/* Filter Tags */}
+            <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex items-center text-white mb-2 mr-4">
+                <Filter className="w-4 h-4 mr-2" />
+                <span className="text-sm font-medium">
+                  {language === 'en' ? 'Filter by tech:' : 'تصفية حسب التقنية:'}
+                </span>
+              </div>
+              {allTags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  className={`px-3 py-1 rounded-full text-sm transition-all duration-200 ${
+                    selectedTags.includes(tag)
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+
+            {/* Active Filters */}
+            {selectedTags.length > 0 && (
+              <div className="text-center">
+                <button
+                  onClick={() => setSelectedTags([])}
+                  className="text-blue-400 hover:text-blue-300 text-sm"
+                >
+                  {language === 'en' ? 'Clear all filters' : 'مسح جميع المرشحات'}
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} language={language} />
+            {filteredProjects.map(project => (
+              <ProjectCard key={project.slug} project={project} language={language} />
             ))}
           </div>
+
+          {/* No Results */}
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-20">
+              <div className="text-slate-400 text-lg mb-4">
+                {language === 'en' ? 'No projects found' : 'لم يتم العثور على مشاريع'}
+              </div>
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedTags([]);
+                }}
+                className="text-blue-400 hover:text-blue-300"
+              >
+                {language === 'en' ? 'Reset filters' : 'إعادة تعيين المرشحات'}
+              </button>
+            </div>
+          )}
         </div>
       </main>
       
