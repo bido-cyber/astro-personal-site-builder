@@ -51,7 +51,7 @@ export function ProjectsSlider() {
           {/* Navigation Arrows */}
           <button
             onClick={prevProject}
-            className={`absolute ${isRTL ? 'right-0 translate-x-4' : 'left-0 -translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
+            className={`absolute ${isRTL ? 'end-0 translate-x-4' : 'start-0 -translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
             disabled={projects.length <= 1}
           >
             <ArrowLeft className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
@@ -59,7 +59,7 @@ export function ProjectsSlider() {
 
           <button
             onClick={nextProject}
-            className={`absolute ${isRTL ? 'left-0 -translate-x-4' : 'right-0 translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
+            className={`absolute ${isRTL ? 'start-0 -translate-x-4' : 'end-0 translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
             disabled={projects.length <= 1}
           >
             <ArrowRight className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
@@ -108,7 +108,7 @@ export function ProjectsSlider() {
             className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
           >
             {language === 'en' ? 'View All Projects' : 'عرض جميع المشاريع'}
-            <ArrowRight className={`w-4 h-4 ${isRTL ? 'mr-2 rotate-180' : 'ml-2'}`} />
+            <ArrowRight className={`w-4 h-4 ${isRTL ? 'me-2 rotate-180' : 'ms-2'}`} />
           </a>
         </div>
       </div>

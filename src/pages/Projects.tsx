@@ -7,6 +7,7 @@ import { SharedNavigation } from '../components/SharedNavigation';
 import { ProjectCard } from '../components/ProjectCard';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
+import { TechIcon } from '../components/TechIcon';
 import projectsData from '../data/projects.json';
 
 function ProjectsContent() {
@@ -70,20 +71,20 @@ function ProjectsContent() {
           <div className="mb-12 space-y-6">
             {/* Search */}
             <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Search className="absolute start-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder={language === 'en' ? 'Search projects...' : 'البحث في المشاريع...'}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                className="w-full ps-10 pe-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
             </div>
 
             {/* Filter Tags */}
             <div className="flex flex-wrap justify-center gap-2">
-              <div className="flex items-center text-white mb-2 mr-4">
-                <Filter className="w-4 h-4 mr-2" />
+              <div className="flex items-center text-white mb-2 me-4">
+                <Filter className="w-4 h-4 me-2" />
                 <span className="text-sm font-medium">
                   {language === 'en' ? 'Filter by tech:' : 'تصفية حسب التقنية:'}
                 </span>
@@ -92,13 +93,14 @@ function ProjectsContent() {
                 <button
                   key={tag}
                   onClick={() => toggleTag(tag)}
-                  className={`px-3 py-1 rounded-full text-sm transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm transition-all duration-200 ${
                     selectedTags.includes(tag)
                       ? 'bg-blue-500 text-white'
                       : 'bg-white/10 text-slate-300 hover:bg-white/20'
                   }`}
                 >
-                  {tag}
+                  <TechIcon tech={tag} size={16} />
+                  <span>{tag}</span>
                 </button>
               ))}
             </div>

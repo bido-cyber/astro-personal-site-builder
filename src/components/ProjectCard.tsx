@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowRight, Github } from 'lucide-react';
+import { TechIcon } from './TechIcon';
 
 interface Project {
   slug: string;
@@ -48,8 +49,9 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
           {project.tech.slice(0, 4).map((tech, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-md border border-blue-500/30"
+              className="flex items-center gap-2 px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-md border border-blue-500/30"
             >
+              <TechIcon tech={tech} size={14} />
               {tech}
             </span>
           ))}
