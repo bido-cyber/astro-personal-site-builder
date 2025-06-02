@@ -49,7 +49,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ms-10 flex items-baseline gap-4">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -69,11 +69,11 @@ export function Navbar() {
           </div>
 
           {/* Language Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4">
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20"
             >
               <Earth className="w-4 h-4" />
               <span>{language === 'en' ? 'AR' : 'EN'}</span>

@@ -58,7 +58,7 @@ export function Testimonials() {
               </blockquote>
 
               {/* Author */}
-              <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+              <div className="flex items-center justify-center gap-4">
                 <img
                   src={testimonials[currentIndex].avatar || "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"}
                   alt={testimonials[currentIndex].name}
@@ -77,7 +77,7 @@ export function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className={`flex justify-center items-center mt-8 ${isRTL ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+          <div className="flex justify-center items-center mt-8 gap-4">
             <button
               onClick={prevAction}
               className="p-2 bg-white/10 hover:bg-white/20 rounded-lg backdrop-blur-md border border-white/20 transition-all duration-300"
@@ -86,7 +86,7 @@ export function Testimonials() {
               {React.createElement(leftArrow, { className: "w-5 h-5 text-white" })}
             </button>
 
-            <div className="flex space-x-2">
+            <div className="flex gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}

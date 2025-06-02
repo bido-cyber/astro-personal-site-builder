@@ -21,7 +21,7 @@ export function Skills() {
                   {skillGroup.icons.map((skill, skillIndex) => (
                     <div
                       key={skillIndex}
-                      className="flex items-center space-x-3 px-3 py-2 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                      className="flex items-center gap-3 px-3 py-2 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-all duration-300 group"
                     >
                       <img
                         src={skill.icon}

@@ -94,7 +94,7 @@ export function Contact() {
               ? 'bg-green-500/20 border border-green-500/50 text-green-100' 
               : 'bg-red-500/20 border border-red-500/50 text-red-100'
           }`}>
-            <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+            <div className="flex items-center gap-3">
               {feedbackType === 'success' ? (
                 <CheckCircle className="w-5 h-5 text-green-400" />
               ) : (
@@ -188,9 +188,7 @@ export function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 rounded-lg transition-all duration-200 group border border-white/10 hover:border-white/20 ${
-                      isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'
-                    }`}
+                    className="flex items-center p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 rounded-lg transition-all duration-200 group border border-white/10 hover:border-white/20 gap-3"
                   >
                     <div className="text-white group-hover:text-blue-400 transition-colors bg-white/10 p-2 rounded-lg">
                       {getIcon(social.icon)}
@@ -208,19 +206,19 @@ export function Contact() {
                 {language === 'en' ? 'Quick Info' : 'معلومات سريعة'}
               </h3>
               <div className="space-y-4 text-slate-300">
-                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+                <div className="flex items-center gap-3">
                   <div className="bg-white/10 p-2 rounded-lg">
                     <MapPin className="w-5 h-5 text-blue-400" />
                   </div>
                   <span>{language === 'en' ? 'Based in Egypt' : 'مقيم في مصر'}</span>
                 </div>
-                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+                <div className="flex items-center gap-3">
                   <div className="bg-white/10 p-2 rounded-lg">
                     <Briefcase className="w-5 h-5 text-purple-400" />
                   </div>
                   <span>{language === 'en' ? 'Available for freelance' : 'متاح للعمل الحر'}</span>
                 </div>
-                <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+                <div className="flex items-center gap-3">
                   <div className="bg-white/10 p-2 rounded-lg">
                     <Clock className="w-5 h-5 text-green-400" />
                   </div>
