@@ -5,7 +5,8 @@ import { StarryBackground } from '../components/StarryBackground';
 import { SharedNavigation } from '../components/SharedNavigation';
 import { Hero } from '../components/Hero';
 import { Skills } from '../components/Skills';
-import { EducationExperience } from '../components/EducationExperience';
+import { Education } from '../components/Education';
+import { Experience } from '../components/Experience';
 import { ProjectsSlider } from '../components/ProjectsSlider';
 import { Testimonials } from '../components/Testimonials';
 import { Contact } from '../components/Contact';
@@ -20,7 +21,8 @@ const Index = () => {
         <main>
           <Hero />
           <Skills />
-          <EducationExperience />
+          <Education />
+          <Experience />
           <ProjectsSlider />
           <Testimonials />
           <Contact />
