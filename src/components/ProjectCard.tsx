@@ -59,7 +59,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
 
         {/* Actions */}
         <div className="flex items-center justify-between pt-4 border-t border-white/10">
-          <div className="flex space-x-3">
+          <div className="flex gap-3">
             {project.repo && (
               <a
                 href={project.repo}
@@ -86,7 +86,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
           
           <a
             href={`/projects/${project.slug}`}
-            className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center space-x-1 transition-colors"
+            className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
           >
             <span>{language === 'en' ? 'Details' : 'التفاصيل'}</span>
             <ArrowRight className="w-3 h-3" />

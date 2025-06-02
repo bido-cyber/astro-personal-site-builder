@@ -100,44 +100,23 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* RTL support for spacing */
-[dir="rtl"] .space-x-4 > * + * {
+/* Universal RTL/LTR spacing utilities */
+.space-x-4 > * + * {
   margin-inline-start: 1rem;
   margin-inline-end: 0;
 }
 
-[dir="rtl"] .space-x-3 > * + * {
+.space-x-3 > * + * {
   margin-inline-start: 0.75rem;
   margin-inline-end: 0;
 }
 
-[dir="rtl"] .space-x-2 > * + * {
+.space-x-2 > * + * {
   margin-inline-start: 0.5rem;
   margin-inline-end: 0;
 }
 
-[dir="rtl"] .space-x-1 > * + * {
-  margin-inline-start: 0.25rem;
-  margin-inline-end: 0;
-}
-
-/* LTR support for spacing */
-[dir="ltr"] .space-x-4 > * + * {
-  margin-inline-start: 1rem;
-  margin-inline-end: 0;
-}
-
-[dir="ltr"] .space-x-3 > * + * {
-  margin-inline-start: 0.75rem;
-  margin-inline-end: 0;
-}
-
-[dir="ltr"] .space-x-2 > * + * {
-  margin-inline-start: 0.5rem;
-  margin-inline-end: 0;
-}
-
-[dir="ltr"] .space-x-1 > * + * {
+.space-x-1 > * + * {
   margin-inline-start: 0.25rem;
   margin-inline-end: 0;
 }
