@@ -23,6 +23,10 @@ export function SharedNavigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
       // If we're not on the home page, navigate there first
@@ -45,7 +49,17 @@ export function SharedNavigation() {
   };
 
   const handleNavClick = (item: any) => {
-    if (item.href.startsWith('#')) {
+    if (item.href === '/') {
+      // If clicking "Home"
+      if (location.pathname === '/') {
+        // If already on home page, scroll to top
+        scrollToTop();
+      } else {
+        // If on another page, navigate to home and scroll to top
+        navigate('/');
+        setTimeout(() => scrollToTop(), 100);
+      }
+    } else if (item.href.startsWith('#')) {
       scrollToSection(item.href);
     } else {
       navigate(item.href);
@@ -63,16 +77,12 @@ export function SharedNavigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a 
-              href="/" 
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/');
-              }}
+            <button 
+              onClick={() => handleNavClick({ href: '/' })}
               className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
             >
               JD
-            </a>
+            </button>
           </div>
 
           {/* Desktop Navigation */}

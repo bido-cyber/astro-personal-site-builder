@@ -11,6 +11,7 @@ const experienceData = {
       {
         position: "Senior Frontend Developer",
         company: "TechCorp Solutions",
+        logo: "https://picsum.photos/48/48?random=1",
         location: "Cairo, Egypt",
         period: "2023 - Present",
         description: "Leading frontend development for enterprise applications using React and TypeScript. Mentoring junior developers and implementing best practices."
@@ -18,6 +19,7 @@ const experienceData = {
       {
         position: "Full Stack Developer",
         company: "Digital Agency",
+        logo: "https://picsum.photos/48/48?random=2",
         location: "Remote",
         period: "2022 - 2023",
         description: "Developed and maintained web applications for various clients using React, Node.js, and MongoDB. Collaborated with design teams to implement pixel-perfect interfaces."
@@ -25,6 +27,7 @@ const experienceData = {
       {
         position: "Junior Web Developer",
         company: "StartupXYZ",
+        logo: "https://picsum.photos/48/48?random=3",
         location: "Cairo, Egypt",
         period: "2021 - 2022",
         description: "Built responsive websites and web applications. Gained experience in modern JavaScript frameworks and version control systems."
@@ -38,6 +41,7 @@ const experienceData = {
       {
         position: "مطور واجهات أمامية أول",
         company: "TechCorp Solutions",
+        logo: "https://picsum.photos/48/48?random=1",
         location: "القاهرة، مصر",
         period: "2023 - الحاضر",
         description: "قيادة تطوير الواجهات الأمامية لتطبيقات المؤسسات باستخدام React و TypeScript. توجيه المطورين المبتدئين وتطبيق أفضل الممارسات."
@@ -45,6 +49,7 @@ const experienceData = {
       {
         position: "مطور تطبيقات شامل",
         company: "وكالة رقمية",
+        logo: "https://picsum.photos/48/48?random=2",
         location: "عن بُعد",
         period: "2022 - 2023",
         description: "تطوير وصيانة تطبيقات الويب لعملاء مختلفين باستخدام React و Node.js و MongoDB. التعاون مع فرق التصميم لتنفيذ واجهات مثالية."
@@ -52,6 +57,7 @@ const experienceData = {
       {
         position: "مطور مواقع مبتدئ",
         company: "StartupXYZ",
+        logo: "https://picsum.photos/48/48?random=3",
         location: "القاهرة، مصر",
         period: "2021 - 2022",
         description: "بناء مواقع ويب وتطبيقات ويب متجاوبة. اكتسبت خبرة في أطر العمل الحديثة لـ JavaScript وأنظمة التحكم في الإصدار."
@@ -67,10 +73,10 @@ export function Experience() {
   const TimelineItem = ({ item }: { item: any }) => (
     <div className={`flex gap-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-lg">
+        <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
           <Briefcase className="w-6 h-6 text-white" />
         </div>
-        <div className="w-px bg-gradient-to-b from-purple-600 to-pink-600 flex-1 mt-4"></div>
+        <div className="w-px bg-gradient-to-b from-green-600 to-emerald-600 flex-1 mt-4"></div>
       </div>
       <div className="flex-1 pb-12">
         <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
@@ -78,9 +84,16 @@ export function Experience() {
             <h3 className="text-lg font-bold text-white mb-1">
               {item.position}
             </h3>
-            <p className="text-purple-300 font-medium">
-              {item.company}
-            </p>
+            <div className={`flex items-center gap-3 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <img 
+                src={item.logo} 
+                alt={`${item.company} logo`}
+                className="w-8 h-8 rounded-lg object-cover"
+              />
+              <p className="text-green-300 font-medium">
+                {item.company}
+              </p>
+            </div>
             <div className={`flex items-center gap-4 mt-2 text-sm text-slate-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <div className={`flex items-center gap-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <MapPin className="w-4 h-4" />

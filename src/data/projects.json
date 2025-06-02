@@ -9,7 +9,7 @@
       "tech": ["React", "Node.js", "PostgreSQL", "Stripe"],
       "repo": "https://github.com/example/ecommerce",
       "demo": "https://ecommerce-demo.example.com",
-      "cover": "/projects/ecommerce-cover.jpg",
+      "cover": "https://picsum.photos/600/300?random=20",
       "category": "fullstack",
       "featured": true
     },
@@ -21,7 +21,7 @@
       "tech": ["React", "D3.js", "WebSocket", "Express"],
       "repo": "https://github.com/example/dashboard",
       "demo": "https://dashboard-demo.example.com",
-      "cover": "/projects/dashboard-cover.jpg",
+      "cover": "https://picsum.photos/600/300?random=21",
       "category": "frontend",
       "featured": false
     },
@@ -33,7 +33,7 @@
       "tech": ["React Native", "Firebase", "Redux", "TypeScript"],
       "repo": "https://github.com/example/taskmanager",
       "demo": "https://taskmanager-demo.example.com",
-      "cover": "/projects/taskmanager-cover.jpg",
+      "cover": "https://picsum.photos/600/300?random=22",
       "category": "mobile",
       "featured": true
     }
@@ -47,7 +47,7 @@
       "tech": ["React", "Node.js", "PostgreSQL", "Stripe"],
       "repo": "https://github.com/example/ecommerce",
       "demo": "https://ecommerce-demo.example.com",
-      "cover": "/projects/ecommerce-cover.jpg",
+      "cover": "https://picsum.photos/600/300?random=20",
       "category": "fullstack",
       "featured": true
     },
@@ -59,7 +59,7 @@
       "tech": ["React", "D3.js", "WebSocket", "Express"],
       "repo": "https://github.com/example/dashboard",
       "demo": "https://dashboard-demo.example.com",
-      "cover": "/projects/dashboard-cover.jpg",
+      "cover": "https://picsum.photos/600/300?random=21",
       "category": "frontend",
       "featured": false
     },
@@ -71,7 +71,7 @@
       "tech": ["React Native", "Firebase", "Redux", "TypeScript"],
       "repo": "https://github.com/example/taskmanager",
       "demo": "https://taskmanager-demo.example.com",
-      "cover": "/projects/taskmanager-cover.jpg",
+      "cover": "https://picsum.photos/600/300?random=22",
       "category": "mobile",
       "featured": true
     }

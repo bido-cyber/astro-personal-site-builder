@@ -1,8 +1,94 @@
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Youtube, CheckCircle, XCircle, MapPin, Clock, Briefcase } from 'lucide-react';
+import { CheckCircle, XCircle, MapPin, Clock, Briefcase } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import contactData from '../data/contact.json';
+
+const contactData = {
+  en: {
+    title: "Let's Work Together",
+    subtitle: "Based in Egypt • Available for freelance",
+    form: {
+      name: "Your Name",
+      email: "Your Email",
+      message: "Your Message",
+      submit: "Send Message"
+    },
+    social: [
+      { 
+        name: "GitHub", 
+        url: "https://github.com/johndoe", 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        color: "hover:bg-gray-800/30"
+      },
+      { 
+        name: "LinkedIn", 
+        url: "https://linkedin.com/in/johndoe", 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+        color: "hover:bg-blue-600/30"
+      },
+      { 
+        name: "Telegram", 
+        url: "https://t.me/johndoe", 
+        icon: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+        color: "hover:bg-blue-500/30"
+      },
+      { 
+        name: "YouTube", 
+        url: "https://youtube.com/@johndoe", 
+        icon: "https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png",
+        color: "hover:bg-red-600/30"
+      },
+      { 
+        name: "Dev.to", 
+        url: "https://dev.to/johndoe", 
+        icon: "https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg",
+        color: "hover:bg-gray-900/30"
+      }
+    ]
+  },
+  ar: {
+    title: "دعونا نعمل معاً",
+    subtitle: "مقيم في مصر • متاح للعمل الحر",
+    form: {
+      name: "اسمك",
+      email: "بريدك الإلكتروني",
+      message: "رسالتك",
+      submit: "إرسال الرسالة"
+    },
+    social: [
+      { 
+        name: "GitHub", 
+        url: "https://github.com/johndoe", 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        color: "hover:bg-gray-800/30"
+      },
+      { 
+        name: "LinkedIn", 
+        url: "https://linkedin.com/in/johndoe", 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+        color: "hover:bg-blue-600/30"
+      },
+      { 
+        name: "Telegram", 
+        url: "https://t.me/johndoe", 
+        icon: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+        color: "hover:bg-blue-500/30"
+      },
+      { 
+        name: "YouTube", 
+        url: "https://youtube.com/@johndoe", 
+        icon: "https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png",
+        color: "hover:bg-red-600/30"
+      },
+      { 
+        name: "Dev.to", 
+        url: "https://dev.to/johndoe", 
+        icon: "https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg",
+        color: "hover:bg-gray-900/30"
+      }
+    ]
+  }
+};
 
 export function Contact() {
   const { language, isRTL } = useLanguage();
@@ -60,19 +146,6 @@ export function Contact() {
       ...prev,
       [e.target.name]: e.target.value
     }));
-  };
-
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'github':
-        return <Github className="w-5 h-5" />;
-      case 'linkedin':
-        return <Linkedin className="w-5 h-5" />;
-      case 'youtube':
-        return <Youtube className="w-5 h-5" />;
-      default:
-        return null;
-    }
   };
 
   return (
@@ -188,10 +261,14 @@ export function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 rounded-lg transition-all duration-200 group border border-white/10 hover:border-white/20 gap-3"
+                    className={`flex items-center p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 ${social.color} rounded-lg transition-all duration-200 group border border-white/10 hover:border-white/20 gap-3`}
                   >
-                    <div className="text-white group-hover:text-blue-400 transition-colors bg-white/10 p-2 rounded-lg">
-                      {getIcon(social.icon)}
+                    <div className="bg-white/10 p-2 rounded-lg">
+                      <img 
+                        src={social.icon} 
+                        alt={social.name}
+                        className="w-5 h-5 object-contain"
+                      />
                     </div>
                     <span className="text-white group-hover:text-blue-400 transition-colors font-medium">
                       {social.name}

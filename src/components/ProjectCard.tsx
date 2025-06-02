@@ -26,7 +26,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
       {/* Cover Image */}
       <div className="relative h-48 overflow-hidden">
         <img
-          src={project.cover || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=300&fit=crop"}
+          src={project.cover || "https://picsum.photos/600/300?random=99"}
           alt={project.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
         />
