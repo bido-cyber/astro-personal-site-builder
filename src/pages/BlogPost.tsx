@@ -6,6 +6,7 @@ import { StarryBackground } from '../components/StarryBackground';
 import { SharedNavigation } from '../components/SharedNavigation';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSEO } from '../hooks/useSEO';
 
 function BlogPostContent() {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +15,25 @@ function BlogPostContent() {
   const [content, setContent] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [postTitle, setPostTitle] = useState<string>('');
+
+  // Extract title from markdown content
+  const extractTitleFromMarkdown = (markdown: string) => {
+    const titleMatch = markdown.match(/^# (.+)$/m);
+    return titleMatch ? titleMatch[1] : slug?.replace(/-/g, ' ') || 'Blog Post';
+  };
+
+  // SEO for blog post
+  useSEO({
+    title: postTitle,
+    description: `Read "${postTitle}" on John Doe's blog. Insights about web development, programming, and technology.`,
+    image: `https://picsum.photos/1200/630?random=${slug}`,
+    url: `https://bido-cyber.github.io/blog/#/blog/${slug}`,
+    type: 'article',
+    author: 'John Doe',
+    publishedTime: new Date().toISOString(),
+    tags: ['web development', 'programming', 'technology', 'blog']
+  });
 
   useEffect(() => {
     const loadBlogPost = async () => {
@@ -32,6 +52,7 @@ function BlogPostContent() {
 
         const markdown = await response.text();
         setContent(markdown);
+        setPostTitle(extractTitleFromMarkdown(markdown));
       } catch (err) {
         console.error('Error loading blog post:', err);
         setError('Post not found');

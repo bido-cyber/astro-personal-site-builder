@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
@@ -10,24 +11,40 @@ import { ProjectsSlider } from '../components/ProjectsSlider';
 import { Testimonials } from '../components/Testimonials';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
+import { useSEO } from '../hooks/useSEO';
+
+function IndexContent() {
+  useSEO({
+    title: 'John Doe - Full Stack Developer Portfolio',
+    description: 'Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and more.',
+    image: 'https://bido-cyber.github.io/blog/og-image.jpg',
+    url: 'https://bido-cyber.github.io/blog/',
+    type: 'website',
+    tags: ['full stack developer', 'web development', 'JavaScript', 'React', 'Node.js', 'portfolio']
+  });
+
+  return (
+    <div className="min-h-screen relative">
+      <StarryBackground />
+      <SharedNavigation />
+      <main>
+        <Hero />
+        <Skills />
+        <Education />
+        <Experience />
+        <ProjectsSlider />
+        <Testimonials />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}
 
 const Index = () => {
   return (
     <LanguageProvider>
-      <div className="min-h-screen relative">
-        <StarryBackground />
-        <SharedNavigation />
-        <main>
-          <Hero />
-          <Skills />
-          <Education />
-          <Experience />
-          <ProjectsSlider />
-          <Testimonials />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <IndexContent />
     </LanguageProvider>
   );
 };

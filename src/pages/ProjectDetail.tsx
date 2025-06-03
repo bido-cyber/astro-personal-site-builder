@@ -7,6 +7,7 @@ import { SharedNavigation } from '../components/SharedNavigation';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { TechIcon } from '../components/TechIcon';
+import { useSEO } from '../hooks/useSEO';
 import projectsData from '../data/projects.json';
 
 function ProjectDetailContent() {
@@ -20,13 +21,23 @@ function ProjectDetailContent() {
   const projects = projectsData[language];
   const project = projects.find(p => p.slug === slug);
 
+  // SEO for project detail
+  useSEO({
+    title: project?.name,
+    description: project?.summary || `Explore the ${project?.name} project by John Doe. Built with ${project?.tech.join(', ')}.`,
+    image: project?.cover || `https://picsum.photos/1200/630?random=${slug}`,
+    url: `https://bido-cyber.github.io/blog/#/projects/${slug}`,
+    type: 'article',
+    author: 'John Doe',
+    tags: project?.tech || ['web development', 'programming']
+  });
+
   useEffect(() => {
     const loadProjectDetail = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        // Try to fetch from public folder with proper base path
         const response = await fetch(
           `${window.location.pathname.split('#')[0]}content/projects/${slug}.md`
         );
@@ -51,7 +62,6 @@ function ProjectDetailContent() {
   }, [slug]);
 
   const formatMarkdown = (markdown: string) => {
-    // Basic markdown parsing - in a real app, use a proper markdown parser
     return markdown
       .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold text-white mb-6">$1</h1>')
       .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold text-white mb-4 mt-8">$1</h2>')
@@ -124,7 +134,6 @@ function ProjectDetailContent() {
 
       <main className="pt-24 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back Button */}
           <button
             onClick={() => navigate('/projects')}
             className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition-colors"
@@ -137,7 +146,6 @@ function ProjectDetailContent() {
             {language === 'en' ? 'Back to Projects' : 'العودة للمشاريع'}
           </button>
 
-          {/* Project Header */}
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20 mb-8">
             <div className="flex flex-col md:flex-row gap-6 items-start">
               <img
@@ -149,7 +157,6 @@ function ProjectDetailContent() {
                 <h1 className="text-3xl font-bold text-white mb-4">{project.name}</h1>
                 <p className="text-slate-300 mb-4">{project.summary}</p>
 
-                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, index) => (
                     <span
@@ -162,7 +169,6 @@ function ProjectDetailContent() {
                   ))}
                 </div>
 
-                {/* Links */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   {project.repo && (
                     <a
@@ -191,7 +197,6 @@ function ProjectDetailContent() {
             </div>
           </div>
 
-          {/* Project Content */}
           <article className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
             <div
               className="prose prose-invert max-w-none text-slate-300 leading-relaxed"
