@@ -75,7 +75,7 @@ export function SharedNavigation() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-black/10 backdrop-blur-md shadow-lg border-b border-white/20 pb-4'
+          ? `bg-black/10 backdrop-blur-md shadow-lg border-b border-white/20 ${isMobileMenuOpen ? 'pb-4' : ''}`
           : 'bg-transparent'
       }`}
     >
