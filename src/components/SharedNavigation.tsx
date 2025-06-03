@@ -4,6 +4,11 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import navData from '../data/nav.json';
 
+interface NavItem {
+  href: string;
+  text: string;
+}
+
 export function SharedNavigation() {
   const { language, setLanguage, isRTL } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,7 +52,7 @@ export function SharedNavigation() {
     }
   };
 
-  const handleNavClick = (item: any) => {
+  const handleNavClick = (item: NavItem) => {
     if (item.href === '/') {
       // If clicking "Home"
       if (location.pathname === '/') {
@@ -61,6 +66,7 @@ export function SharedNavigation() {
     } else if (item.href.startsWith('#')) {
       scrollToSection(item.href);
     } else {
+      scrollToTop();
       navigate(item.href);
     }
     setIsMobileMenuOpen(false);
@@ -79,7 +85,7 @@ export function SharedNavigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <button
-              onClick={() => handleNavClick({ href: '/' })}
+              onClick={() => handleNavClick({ href: '/', text: 'Home' })}
               className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
             >
               JD

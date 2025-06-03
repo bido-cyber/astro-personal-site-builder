@@ -10,7 +10,7 @@ import { TechIcon } from '../components/TechIcon';
 import projectsData from '../data/projects.json';
 
 function ProjectsContent() {
-  const { language } = useLanguage();
+  const { language, isRTL } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -116,7 +116,7 @@ function ProjectsContent() {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map(project => (
-              <ProjectCard key={project.slug} project={project} language={language} />
+              <ProjectCard key={project.slug} project={project} language={language} isRTL={isRTL} />
             ))}
           </div>
 

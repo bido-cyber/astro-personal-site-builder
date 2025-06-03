@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
 import { SharedNavigation } from '../components/SharedNavigation';
@@ -10,7 +10,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 function BlogPostContent() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { language, isRTL } = useLanguage();
   const [content, setContent] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -120,9 +120,13 @@ function BlogPostContent() {
           {/* Back Button */}
           <button
             onClick={() => navigate('/blog')}
-            className="inline-flex items-center text-blue-400 hover:text-blue-300 mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            {isRTL ? (
+              <ArrowRight className="w-4 h-4 mr-2" />
+            ) : (
+              <ArrowLeft className="w-4 h-4 mr-2" />
+            )}
             {language === 'en' ? 'Back to Blog' : 'العودة للمدونة'}
           </button>
 

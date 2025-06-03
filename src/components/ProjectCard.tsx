@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Github } from 'lucide-react';
 import { TechIcon } from './TechIcon';
 
 interface Project {
@@ -17,9 +17,10 @@ interface Project {
 interface ProjectCardProps {
   project: Project;
   language: string;
+  isRTL: boolean;
 }
 
-export function ProjectCard({ project, language }: ProjectCardProps) {
+export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
   return (
     <div className="group bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-xl overflow-hidden shadow-xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:transform hover:scale-105">
       {/* Cover Image */}
@@ -76,7 +77,11 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
                 className="p-2 bg-blue-500/20 rounded-lg hover:bg-blue-500/30 transition-colors"
                 aria-label="View demo"
               >
-                <ArrowRight className="w-4 h-4 text-blue-300" />
+                {isRTL ? (
+                  <ArrowLeft className="w-4 h-4 text-blue-300" />
+                ) : (
+                  <ArrowRight className="w-4 h-4 text-blue-300" />
+                )}
               </a>
             )}
           </div>
@@ -86,7 +91,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
             className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
           >
             <span>{language === 'en' ? 'Details' : 'التفاصيل'}</span>
-            <ArrowRight className="w-3 h-3" />
+            {isRTL ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
           </a>
         </div>
       </div>

@@ -76,7 +76,7 @@ export function ProjectsSlider() {
               {projects.map((project, index) => (
                 <div key={project.slug} className="w-full flex-shrink-0 px-4">
                   <div className="max-w-lg mx-auto">
-                    <ProjectCard project={project} language={language} />
+                    <ProjectCard project={project} language={language} isRTL={isRTL} />
                   </div>
                 </div>
               ))}
@@ -101,7 +101,7 @@ export function ProjectsSlider() {
         <div className="text-center mt-12">
           <a
             href="/projects"
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
+            className="inline-flex gap-2 items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
           >
             {language === 'en' ? 'View All Projects' : 'عرض جميع المشاريع'}
             <ArrowRight className={`w-4 h-4 ${isRTL ? 'me-2 rotate-180' : 'ms-2'}`} />

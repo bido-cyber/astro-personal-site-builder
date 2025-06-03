@@ -53,8 +53,8 @@ export function Hero() {
           {/* Content - Below image on mobile */}
           <div
             className={`space-y-8 order-2 lg:order-1 ${
-              isRTL ? 'lg:col-start-2 text-right' : 'text-left'
-            } text-center lg:text-left`}
+              isRTL ? 'lg:col-start-2' : 'text-left'
+            } ${isRTL ? 'text-center lg:text-right' : 'text-center lg:text-left'}`}
           >
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
@@ -75,7 +75,9 @@ export function Hero() {
               <a
                 href="/cv.pdf"
                 download
-                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+                className={`inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 ${
+                  isRTL ? 'lg:ml-auto' : ''
+                }`}
               >
                 {language === 'en' ? 'Download CV' : 'تحميل السيرة الذاتية'}
               </a>
