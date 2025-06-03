@@ -17,6 +17,12 @@ export default defineConfig(({ command, mode }) => ({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        fallback: path.resolve(__dirname, 'index.html'), // will become 404.html
+      },
+    },
   },
   base: '/',
 }));
