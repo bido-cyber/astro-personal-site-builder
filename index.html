@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -58,81 +59,21 @@
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "John Doe",
-        "jobTitle": "Full Stack Developer",
-        "description": "Full Stack Developer specializing in modern web technologies",
-        "url": "https://bido-cyber.github.io/",
-        "image": "https://bido-cyber.github.io/og-image.jpg",
-        "sameAs": [
-          "https://github.com/johndoe",
-          "https://linkedin.com/in/johndoe",
-          "https://twitter.com/johndoe"
-        ],
-        "knowsAbout": ["JavaScript", "React", "Node.js", "TypeScript", "Python", "Web Development"]
-      }
-    </script>
-
-    <!-- Prerender.io Integration -->
-    <meta name="fragment" content="!" />
-
-    <!-- Dynamic Meta Tags Script -->
-    <script type="text/javascript">
-      // Function to update meta tags based on hash route
-      function updateMetaTags() {
-        const hash = window.location.hash.slice(2) || '/'; // Remove #/ and default to home
-        const baseUrl = 'https://bido-cyber.github.io';
-        let title = 'John Doe - Full Stack Developer Portfolio';
-        let description =
-          'Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and more.';
-        let image = `${baseUrl}/og-image.jpg`;
-
-        // Update meta tags based on route
-        if (hash.startsWith('projects/')) {
-          const projectSlug = hash.replace('projects/', '');
-          title = `${projectSlug.split('-').join(' ')} - Project by John Doe`;
-          description = `Check out my ${projectSlug.split('-').join(' ')} project. Built with modern web technologies.`;
-          image = `${baseUrl}/projects/${projectSlug}.jpg`;
-        } else if (hash.startsWith('blog/')) {
-          const blogSlug = hash.replace('blog/', '');
-          title = `${blogSlug.split('-').join(' ')} - Blog Post by John Doe`;
-          description = `Read about ${blogSlug.split('-').join(' ')} on John Doe's blog.`;
-          image = `${baseUrl}/blog/${blogSlug}.jpg`;
-        } else if (hash === 'projects') {
-          title = 'Projects - John Doe Portfolio';
-          description = 'Explore my latest projects and work in web development.';
-        } else if (hash === 'blog') {
-          title = 'Blog - John Doe Portfolio';
-          description = 'Read my latest thoughts and tutorials on web development.';
-        }
-
-        // Update meta tags
-        document.title = title;
-        document.querySelector('meta[name="description"]').setAttribute('content', description);
-        document.querySelector('meta[property="og:title"]').setAttribute('content', title);
-        document
-          .querySelector('meta[property="og:description"]')
-          .setAttribute('content', description);
-        document.querySelector('meta[property="og:image"]').setAttribute('content', image);
-        document
-          .querySelector('meta[property="og:url"]')
-          .setAttribute('content', `${baseUrl}/#/${hash}`);
-        document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
-        document
-          .querySelector('meta[name="twitter:description"]')
-          .setAttribute('content', description);
-        document.querySelector('meta[name="twitter:image"]').setAttribute('content', image);
-        document
-          .querySelector('meta[name="twitter:url"]')
-          .setAttribute('content', `${baseUrl}/#/${hash}`);
-      }
-
-      // Update meta tags on hash change
-      window.addEventListener('hashchange', updateMetaTags);
-      // Update meta tags on initial load
-      window.addEventListener('load', updateMetaTags);
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "John Doe",
+      "jobTitle": "Full Stack Developer",
+      "description": "Full Stack Developer specializing in modern web technologies",
+      "url": "https://bido-cyber.github.io/",
+      "image": "https://bido-cyber.github.io/og-image.jpg",
+      "sameAs": [
+        "https://github.com/johndoe",
+        "https://linkedin.com/in/johndoe",
+        "https://twitter.com/johndoe"
+      ],
+      "knowsAbout": ["JavaScript", "React", "Node.js", "TypeScript", "Python", "Web Development"]
+    }
     </script>
   </head>
 
