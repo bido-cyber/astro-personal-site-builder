@@ -15,8 +15,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -48,10 +48,10 @@ jobs:
 
       - name: Clone bido-cyber.github.io repo
         run: |
-          git clone --depth=1 https://x-access-token:${{ secrets.GH_PAGES_TOKEN }}@github.com/YOUR_USERNAME/bido-cyber.github.io.git out
+          git clone --depth=1 https://x-access-token:${{ secrets.GH_PAGES_TOKEN }}@github.com/bido-cyber/bido-cyber.github.io.git out
           rm -rf out/*
-      env:
-        GH_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
 
       - name: Copy files to output repo
         run: cp -r dist/* out/
