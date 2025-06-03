@@ -21,7 +21,7 @@ export function TechIcon({ tech, size = 24, className = '' }: TechIconProps) {
         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
       postgresql:
         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      stripe: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/stripe.svg',
+      stripe: 'https://www.svgrepo.com/show/354401/stripe.svg',
       'd3.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg',
       websocket:
         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg',
@@ -56,6 +56,23 @@ export function TechIcon({ tech, size = 24, className = '' }: TechIconProps) {
       github: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
       figma: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
       photoshop: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg',
+      javafx: '/images/java.png',
+      scss: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+      ionic: 'https://www.svgrepo.com/show/353912/ionic-icon.svg',
+      capacitor: 'https://www.svgrepo.com/show/353536/capacitorjs-icon.svg',
+      electron:
+        'https://upload.wikimedia.org/wikipedia/commons/9/91/Electron_Software_Framework_Logo.svg',
+      pwa: 'https://raw.githubusercontent.com/duiker101/pwa-icon/master/pwa-512x512.png',
+      nestjs:
+        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg',
+      'rest apis': 'https://img.icons8.com/ios-filled/50/api-settings.png',
+      rabbitmq: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg',
+      java: '/images/java.png',
+      sqlite: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg',
+      jenkins: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
+      swagger: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg',
+      postman: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
+      jira: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
     };
 
     return (
