@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import skillsData from '../data/skills.json';
+import { TechIcon } from './TechIcon';
 
 export function Skills() {
   const { language } = useLanguage();
@@ -13,17 +14,19 @@ export function Skills() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {skills.map((skillGroup, index) => (
               <div key={index} className="space-y-4">
-                <h3 className="text-lg font-semibold text-white mb-4">{skillGroup.group}</h3>
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  {skillGroup.group}
+                </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {skillGroup.icons.map((skill, skillIndex) => (
                     <div
                       key={skillIndex}
-                      className="flex items-center gap-3 px-3 py-2 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                      className="flex items-center gap-3 px-3 py-2 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 hover:scale-105 transition-all duration-300 group"
                     >
-                      <img
-                        src={skill.icon}
-                        alt={skill.name}
-                        className="w-6 h-6 group-hover:scale-110 transition-transform duration-300"
+                      <TechIcon
+                        tech={skill.name.toLowerCase()}
+                        size={24}
+                        className="group-hover:rotate-12 transition-transform duration-300"
                       />
                       <span className="text-xs font-medium">{skill.name}</span>
                     </div>
