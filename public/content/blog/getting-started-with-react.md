@@ -1,7 +1,6 @@
-
 # Getting Started with React in 2024
 
-*Published on January 15, 2024*
+_Published on January 15, 2024_
 
 React has evolved significantly over the years, and 2024 brings exciting new features and best practices. In this comprehensive guide, we'll explore how to get started with React using the latest tools and techniques.
 
@@ -19,6 +18,7 @@ React continues to evolve with performance improvements and developer experience
 ### Prerequisites
 
 Before we start, make sure you have:
+
 - Node.js 18+ installed
 - A code editor (VS Code recommended)
 - Basic JavaScript knowledge
@@ -53,15 +53,14 @@ function UserProfile({ userId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchUser(userId)
-      .then(userData => {
-        setUser(userData);
-        setLoading(false);
-      });
+    fetchUser(userId).then(userData => {
+      setUser(userData);
+      setLoading(false);
+    });
   }, [userId]);
 
   if (loading) return <div>Loading...</div>;
-  
+
   return (
     <div className="user-profile">
       <h1>{user.name}</h1>
@@ -107,12 +106,8 @@ const ThemeContext = createContext();
 
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
-  
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
 ```
 
@@ -121,18 +116,19 @@ function ThemeProvider({ children }) {
 For more complex applications, consider using Zustand:
 
 ```jsx
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-const useStore = create((set) => ({
+const useStore = create(set => ({
   count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
-}))
+  increment: () => set(state => ({ count: state.count + 1 })),
+  decrement: () => set(state => ({ count: state.count - 1 })),
+}));
 ```
 
 ## Best Practices for 2024
 
 ### 1. Use TypeScript
+
 TypeScript provides better developer experience and catches errors early:
 
 ```tsx
@@ -154,6 +150,7 @@ const Counter: React.FC<Props> = ({ title, count, onIncrement }) => {
 ```
 
 ### 2. Component Composition
+
 Prefer composition over inheritance:
 
 ```jsx
@@ -177,6 +174,7 @@ function UserCard({ user }) {
 ```
 
 ### 3. Error Boundaries
+
 Handle errors gracefully:
 
 ```jsx
@@ -219,7 +217,7 @@ function ProductList({ products, category }) {
     return products.filter(product => product.category === category);
   }, [products, category]);
 
-  const handleSort = useCallback((sortBy) => {
+  const handleSort = useCallback(sortBy => {
     // Sort logic
   }, []);
 
@@ -243,14 +241,14 @@ import Counter from './Counter';
 
 test('increments counter on button click', () => {
   render(<Counter />);
-  
+
   const button = screen.getByRole('button', { name: '+' });
   const counter = screen.getByTestId('counter-value');
-  
+
   expect(counter).toHaveTextContent('0');
-  
+
   fireEvent.click(button);
-  
+
   expect(counter).toHaveTextContent('1');
 });
 ```
@@ -280,6 +278,7 @@ VITE_APP_VERSION=1.0.0
 React in 2024 offers powerful tools for building modern web applications. By following these patterns and best practices, you'll be well-equipped to create maintainable, performant React applications.
 
 Key takeaways:
+
 - Use TypeScript for better development experience
 - Leverage modern hooks and patterns
 - Focus on component composition

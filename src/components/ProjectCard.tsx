@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Github } from 'lucide-react';
 import { TechIcon } from './TechIcon';
@@ -26,7 +25,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
       {/* Cover Image */}
       <div className="relative h-48 overflow-hidden">
         <img
-          src={project.cover || "https://picsum.photos/600/300?random=99"}
+          src={project.cover || 'https://picsum.photos/600/300?random=99'}
           alt={project.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
         />
@@ -39,9 +38,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
           <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
             {project.name}
           </h3>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            {project.summary}
-          </p>
+          <p className="text-slate-300 text-sm leading-relaxed">{project.summary}</p>
         </div>
 
         {/* Tech Stack */}
@@ -83,7 +80,7 @@ export function ProjectCard({ project, language }: ProjectCardProps) {
               </a>
             )}
           </div>
-          
+
           <a
             href={`/projects/${project.slug}`}
             className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"

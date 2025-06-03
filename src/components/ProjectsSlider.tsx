@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -8,7 +7,7 @@ import projectsData from '../data/projects.json';
 export function ProjectsSlider() {
   const { language, isRTL } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   // Filter only featured projects
   const allProjects = projectsData[language];
   const projects = allProjects.filter(project => project.featured === true);
@@ -16,18 +15,18 @@ export function ProjectsSlider() {
   // Auto-advance every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % projects.length);
+      setCurrentIndex(prev => (prev + 1) % projects.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, [projects.length]);
 
   const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    setCurrentIndex(prev => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentIndex(prev => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
@@ -39,10 +38,9 @@ export function ProjectsSlider() {
             {language === 'en' ? 'Featured Projects' : 'المشاريع المميزة'}
           </h2>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            {language === 'en' 
+            {language === 'en'
               ? 'Here are some of my recent projects that showcase my skills and experience.'
-              : 'إليك بعض من مشاريعي الحديثة التي تعرض مهاراتي وخبرتي.'
-            }
+              : 'إليك بعض من مشاريعي الحديثة التي تعرض مهاراتي وخبرتي.'}
           </p>
         </div>
 
@@ -67,12 +65,12 @@ export function ProjectsSlider() {
 
           {/* Project Cards */}
           <div className="overflow-hidden rounded-2xl">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ 
-                transform: isRTL 
-                  ? `translateX(${currentIndex * 100}%)` 
-                  : `translateX(-${currentIndex * 100}%)`
+              style={{
+                transform: isRTL
+                  ? `translateX(${currentIndex * 100}%)`
+                  : `translateX(-${currentIndex * 100}%)`,
               }}
             >
               {projects.map((project, index) => (
@@ -92,9 +90,7 @@ export function ProjectsSlider() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-400 scale-125' 
-                    : 'bg-white/30 hover:bg-white/50'
+                  index === currentIndex ? 'bg-blue-400 scale-125' : 'bg-white/30 hover:bg-white/50'
                 }`}
               />
             ))}

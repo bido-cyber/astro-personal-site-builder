@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
@@ -21,14 +20,14 @@ function BlogPostContent() {
       try {
         setLoading(true);
         setError(null);
-        
+
         // Try to fetch from public folder
         const response = await fetch(`/content/blog/${slug}.md`);
-        
+
         if (!response.ok) {
           throw new Error('Post not found');
         }
-        
+
         const markdown = await response.text();
         setContent(markdown);
       } catch (err) {
@@ -52,7 +51,10 @@ function BlogPostContent() {
       .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold text-white mb-3 mt-6">$1</h3>')
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-white">$1</strong>')
       .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-      .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto"><code class="text-green-400">$1</code></pre>')
+      .replace(
+        /```([\s\S]*?)```/g,
+        '<pre class="bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto"><code class="text-green-400">$1</code></pre>'
+      )
       .replace(/`(.*?)`/g, '<code class="bg-gray-800 px-2 py-1 rounded text-green-400">$1</code>')
       .replace(/\n\n/g, '<br><br>')
       .replace(/\n/g, '<br>');
@@ -89,10 +91,9 @@ function BlogPostContent() {
                 {language === 'en' ? 'Post Not Found' : 'المقال غير موجود'}
               </h1>
               <p className="text-slate-300 mb-8">
-                {language === 'en' 
-                  ? 'The blog post you\'re looking for doesn\'t exist.'
-                  : 'المقال الذي تبحث عنه غير موجود.'
-                }
+                {language === 'en'
+                  ? "The blog post you're looking for doesn't exist."
+                  : 'المقال الذي تبحث عنه غير موجود.'}
               </p>
               <button
                 onClick={() => navigate('/blog')}
@@ -113,7 +114,7 @@ function BlogPostContent() {
     <div className="min-h-screen relative">
       <StarryBackground />
       <SharedNavigation />
-      
+
       <main className="pt-24 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
@@ -127,14 +128,14 @@ function BlogPostContent() {
 
           {/* Article Content */}
           <article className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20">
-            <div 
+            <div
               className="prose prose-invert max-w-none text-slate-300 leading-relaxed"
               dangerouslySetInnerHTML={{ __html: formatMarkdown(content) }}
             />
           </article>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

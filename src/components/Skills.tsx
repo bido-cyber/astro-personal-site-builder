@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import skillsData from '../data/skills.json';
@@ -14,9 +13,7 @@ export function Skills() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {skills.map((skillGroup, index) => (
               <div key={index} className="space-y-4">
-                <h3 className="text-lg font-semibold text-white mb-4">
-                  {skillGroup.group}
-                </h3>
+                <h3 className="text-lg font-semibold text-white mb-4">{skillGroup.group}</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {skillGroup.icons.map((skill, skillIndex) => (
                     <div

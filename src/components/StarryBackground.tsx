@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Star {
@@ -29,29 +28,29 @@ export function StarryBackground() {
     const createStars = () => {
       const starCount = Math.floor((canvas.width * canvas.height) / 15000);
       starsRef.current = [];
-      
+
       for (let i = 0; i < starCount; i++) {
         starsRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2 + 0.5,
           speed: Math.random() * 0.5 + 0.1,
-          opacity: Math.random() * 0.8 + 0.2
+          opacity: Math.random() * 0.8 + 0.2,
         });
       }
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       starsRef.current.forEach(star => {
         star.y += star.speed;
-        
+
         if (star.y > canvas.height) {
           star.y = -5;
           star.x = Math.random() * canvas.width;
         }
-        
+
         ctx.save();
         ctx.globalAlpha = star.opacity;
         ctx.fillStyle = '#ffffff';
@@ -60,7 +59,7 @@ export function StarryBackground() {
         ctx.fill();
         ctx.restore();
       });
-      
+
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -71,7 +70,7 @@ export function StarryBackground() {
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
+
     if (!prefersReducedMotion) {
       resizeCanvas();
       createStars();

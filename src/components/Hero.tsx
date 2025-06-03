@@ -1,22 +1,22 @@
-import React from "react";
-import { useLanguage } from "../contexts/LanguageContext";
-import siteData from "../data/site.json";
+import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import siteData from '../data/site.json';
 
 export function Hero() {
   const { language, isRTL } = useLanguage();
   const content = siteData[language];
 
   const scrollToContact = () => {
-    const contactSection = document.querySelector("#contact");
+    const contactSection = document.querySelector('#contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+      contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const scrollToSkills = () => {
-    const skillsSection = document.querySelector("#skills");
+    const skillsSection = document.querySelector('#skills');
     if (skillsSection) {
-      skillsSection.scrollIntoView({ behavior: "smooth" });
+      skillsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -25,21 +25,19 @@ export function Hero() {
       <div className="max-w-7xl mx-auto">
         <div
           className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-            isRTL ? "lg:grid-flow-col-dense" : ""
+            isRTL ? 'lg:grid-flow-col-dense' : ''
           }`}
         >
           {/* Portrait - Above text on mobile */}
           <div
-            className={`flex justify-center order-1 lg:order-2 ${
-              isRTL ? "lg:col-start-1" : ""
-            }`}
+            className={`flex justify-center order-1 lg:order-2 ${isRTL ? 'lg:col-start-1' : ''}`}
           >
             <div className="relative">
               <div
                 className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full overflow-hidden shadow-2xl"
                 style={{
                   clipPath:
-                    "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+                    'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
                 }}
               >
                 <img
@@ -55,7 +53,7 @@ export function Hero() {
           {/* Content - Below image on mobile */}
           <div
             className={`space-y-8 order-2 lg:order-1 ${
-              isRTL ? "lg:col-start-2 text-right" : "text-left"
+              isRTL ? 'lg:col-start-2 text-right' : 'text-left'
             } text-center lg:text-left`}
           >
             <div className="space-y-4">
@@ -71,7 +69,7 @@ export function Hero() {
 
             <div
               className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start ${
-                isRTL ? "lg:flex-row-reverse" : ""
+                isRTL ? 'lg:flex-row-reverse' : ''
               }`}
             >
               <a
@@ -79,13 +77,13 @@ export function Hero() {
                 download
                 className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
               >
-                {language === "en" ? "Download CV" : "تحميل السيرة الذاتية"}
+                {language === 'en' ? 'Download CV' : 'تحميل السيرة الذاتية'}
               </a>
               <button
                 onClick={scrollToContact}
                 className="inline-flex items-center justify-center px-8 py-3 border-2 border-white/20 text-base font-medium rounded-lg text-white hover:bg-white/10 transition-all duration-200"
               >
-                {language === "en" ? "Get In Touch" : "تواصل معي"}
+                {language === 'en' ? 'Get In Touch' : 'تواصل معي'}
               </button>
             </div>
 
@@ -94,12 +92,7 @@ export function Hero() {
                 onClick={scrollToSkills}
                 className="animate-bounce text-white/60 hover:text-white transition-colors lg:ml-auto"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
