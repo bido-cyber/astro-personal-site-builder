@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Calendar, Clock, Github, ExternalLink } from 'lucide-react';
@@ -144,10 +143,10 @@ function ProjectDetailContent() {
                 alt={project.name}
                 className="w-full md:w-48 h-32 object-cover rounded-lg"
               />
-              <div className="flex-1">
+              <div className="flex-1 w-full">
                 <h1 className="text-3xl font-bold text-white mb-4">{project.name}</h1>
                 <p className="text-slate-300 mb-4">{project.summary}</p>
-                
+
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, index) => (
@@ -162,7 +161,7 @@ function ProjectDetailContent() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   {project.repo && (
                     <a
                       href={project.repo}

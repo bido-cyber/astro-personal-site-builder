@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, ArrowLeft, Github } from 'lucide-react';
 import { TechIcon } from './TechIcon';
@@ -50,7 +49,9 @@ export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
         <div className="space-y-2">
           <button
             onClick={handleTitleClick}
-            className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors text-left w-full"
+            className={`text-xl font-bold text-white group-hover:text-blue-400 transition-colors w-full ${
+              isRTL ? 'text-right' : 'text-left'
+            }`}
           >
             {project.name}
           </button>
@@ -92,11 +93,16 @@ export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
                 className="p-2 bg-blue-500/20 rounded-lg hover:bg-blue-500/30 transition-colors"
                 aria-label="View demo"
               >
-                {isRTL ? (
-                  <ArrowLeft className="w-4 h-4 text-blue-300" />
-                ) : (
-                  <ArrowRight className="w-4 h-4 text-blue-300" />
-                )}
+                <div className="flex items-center gap-2">
+                  {isRTL ? (
+                    <ArrowLeft className="w-4 h-4 text-blue-300" />
+                  ) : (
+                    <ArrowRight className="w-4 h-4 text-blue-300" />
+                  )}
+                  <span className="text-blue-300 text-sm">
+                    {language === 'en' ? 'Demo' : 'عرض التجربة'}
+                  </span>
+                </div>
               </a>
             )}
           </div>
