@@ -21,7 +21,7 @@ export function TechIcon({ tech, size = 24, className = '' }: TechIconProps) {
         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
       postgresql:
         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      stripe: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg',
+      stripe: 'https://cdn.jsdelivr.net/npm/simple-icons/icons/stripe.svg',
       'd3.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg',
       websocket:
         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg',
