@@ -26,8 +26,10 @@ function ProjectDetailContent() {
         setLoading(true);
         setError(null);
 
-        // Try to fetch from public folder
-        const response = await fetch(`/content/projects/${slug}.md`);
+        // Try to fetch from public folder with proper base path
+        const response = await fetch(
+          `${window.location.pathname.split('#')[0]}content/projects/${slug}.md`
+        );
 
         if (!response.ok) {
           throw new Error('Project details not found');

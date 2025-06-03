@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ProjectCard } from './ProjectCard';
 import projectsData from '../data/projects.json';
+import { Link } from 'react-router-dom';
 
 export function ProjectsSlider() {
   const { language, isRTL } = useLanguage();
@@ -99,13 +100,13 @@ export function ProjectsSlider() {
 
         {/* Show All Button */}
         <div className="text-center mt-12">
-          <a
-            href="/projects"
+          <Link
+            to="/projects"
             className="inline-flex gap-2 items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105"
           >
             {language === 'en' ? 'View All Projects' : 'عرض جميع المشاريع'}
             <ArrowRight className={`w-4 h-4 ${isRTL ? 'me-2 rotate-180' : 'ms-2'}`} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { StarryBackground } from '../components/StarryBackground';
 import { SharedNavigation } from '../components/SharedNavigation';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 // Dummy blog data - in real app this would come from markdown files
 const blogPosts = {
@@ -154,18 +155,18 @@ function BlogContent() {
                     </div>
 
                     <h2 className="text-xl font-bold text-white mb-3 hover:text-blue-400 transition-colors">
-                      <a href={`/blog/${post.slug}`}>{post.title}</a>
+                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                     </h2>
 
                     <p className="text-slate-300 mb-4">{post.excerpt}</p>
 
-                    <a
-                      href={`/blog/${post.slug}`}
+                    <Link
+                      to={`/blog/${post.slug}`}
                       className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium"
                     >
                       {language === 'en' ? 'Read more' : 'اقرأ المزيد'}
                       <span className={`ms-1`}>{isRTL ? '← ' : ' →'}</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>

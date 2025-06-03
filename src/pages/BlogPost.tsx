@@ -21,8 +21,10 @@ function BlogPostContent() {
         setLoading(true);
         setError(null);
 
-        // Try to fetch from public folder
-        const response = await fetch(`/content/blog/${slug}.md`);
+        // Try to fetch from public folder with proper base path
+        const response = await fetch(
+          `${window.location.pathname.split('#')[0]}content/blog/${slug}.md`
+        );
 
         if (!response.ok) {
           throw new Error('Post not found');
