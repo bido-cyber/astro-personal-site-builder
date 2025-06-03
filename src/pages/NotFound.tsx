@@ -33,7 +33,7 @@ function NotFoundContent() {
           <div className="space-y-4">
             <a
               href="/"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 space-x-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 space-x-2"
             >
               <Home className="w-5 h-5" />
               <span>{language === 'en' ? 'Go Home' : 'العودة للرئيسية'}</span>
@@ -42,7 +42,7 @@ function NotFoundContent() {
             <div className="text-center">
               <button
                 onClick={() => window.history.back()}
-                className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium space-x-2"
+                className="inline-flex gap-2 items-center text-blue-400 hover:text-blue-300 font-medium space-x-2"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>{language === 'en' ? 'Go Back' : 'العودة'}</span>
