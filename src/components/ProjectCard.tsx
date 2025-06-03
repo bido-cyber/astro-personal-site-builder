@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { ArrowRight, ArrowLeft, Github } from 'lucide-react';
 import { TechIcon } from './TechIcon';
+import { useNavigate } from 'react-router-dom';
 
 interface Project {
   slug: string;
@@ -21,6 +23,16 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
+  const navigate = useNavigate();
+
+  const handleTitleClick = () => {
+    navigate(`/projects/${project.slug}`);
+  };
+
+  const handleDetailsClick = () => {
+    navigate(`/projects/${project.slug}`);
+  };
+
   return (
     <div className="group bg-white/10 dark:bg-slate-800/50 backdrop-blur-md rounded-xl overflow-hidden shadow-xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:transform hover:scale-105">
       {/* Cover Image */}
@@ -36,9 +48,12 @@ export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
       {/* Content */}
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+          <button
+            onClick={handleTitleClick}
+            className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors text-left w-full"
+          >
             {project.name}
-          </h3>
+          </button>
           <p className="text-slate-300 text-sm leading-relaxed">{project.summary}</p>
         </div>
 
@@ -86,13 +101,13 @@ export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
             )}
           </div>
 
-          <a
-            href={`/projects/${project.slug}`}
+          <button
+            onClick={handleDetailsClick}
             className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
           >
             <span>{language === 'en' ? 'Details' : 'التفاصيل'}</span>
             {isRTL ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
-          </a>
+          </button>
         </div>
       </div>
     </div>

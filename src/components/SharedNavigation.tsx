@@ -42,7 +42,7 @@ export function SharedNavigation() {
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
           }
-        }, 100);
+        }, 200); // Increased timeout to ensure page loads
       } else {
         const element = document.querySelector(href);
         if (element) {
@@ -54,20 +54,19 @@ export function SharedNavigation() {
 
   const handleNavClick = (item: NavItem) => {
     if (item.href === '/') {
-      // If clicking "Home"
+      // Always scroll to top when clicking Home
       if (location.pathname === '/') {
-        // If already on home page, scroll to top
         scrollToTop();
       } else {
-        // If on another page, navigate to home and scroll to top
         navigate('/');
         setTimeout(() => scrollToTop(), 100);
       }
     } else if (item.href.startsWith('#')) {
       scrollToSection(item.href);
     } else {
-      scrollToTop();
+      // For other pages, navigate and scroll to top
       navigate(item.href);
+      setTimeout(() => scrollToTop(), 100);
     }
     setIsMobileMenuOpen(false);
   };
