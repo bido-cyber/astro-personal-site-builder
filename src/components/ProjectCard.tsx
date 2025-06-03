@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ArrowLeft, Github } from 'lucide-react';
+import { ArrowRight, ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import { TechIcon } from './TechIcon';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ interface Project {
   repo?: string;
   demo?: string;
   cover: string;
-  category: string;
+  hasDetails?: boolean;
 }
 
 interface ProjectCardProps {
@@ -94,26 +94,24 @@ export function ProjectCard({ project, language, isRTL }: ProjectCardProps) {
                 aria-label="View demo"
               >
                 <div className="flex items-center gap-2">
-                  {isRTL ? (
-                    <ArrowLeft className="w-4 h-4 text-blue-300" />
-                  ) : (
-                    <ArrowRight className="w-4 h-4 text-blue-300" />
-                  )}
+                  <ExternalLink className="w-4 h-4 text-blue-300" />
                   <span className="text-blue-300 text-sm">
-                    {language === 'en' ? 'Demo' : 'عرض التجربة'}
+                    {language === 'en' ? 'Live Demo' : 'العرض المباشر'}
                   </span>
                 </div>
               </a>
             )}
           </div>
 
-          <button
-            onClick={handleDetailsClick}
-            className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
-          >
-            <span>{language === 'en' ? 'Details' : 'التفاصيل'}</span>
-            {isRTL ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
-          </button>
+          {project.hasDetails && (
+            <button
+              onClick={handleDetailsClick}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
+            >
+              <span>{language === 'en' ? 'Details' : 'التفاصيل'}</span>
+              {isRTL ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
+            </button>
+          )}
         </div>
       </div>
     </div>
