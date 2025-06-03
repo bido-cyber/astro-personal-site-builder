@@ -24,5 +24,5 @@ export default defineConfig(({ command, mode }) => ({
       },
     },
   },
-  base: '/',
+  base: './',
 }));
