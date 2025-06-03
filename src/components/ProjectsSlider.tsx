@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -47,25 +48,25 @@ export function ProjectsSlider() {
 
         {/* Slider Container */}
         <div className="relative">
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Updated positioning for mobile */}
           <button
             onClick={prevProject}
-            className={`absolute ${isRTL ? 'end-0 translate-x-4' : 'start-0 -translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
+            className={`absolute ${isRTL ? 'end-2 sm:end-0 sm:translate-x-4' : 'start-2 sm:start-0 sm:-translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-2 sm:p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
             disabled={projects.length <= 1}
           >
-            <ArrowLeft className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-blue-400 transition-colors" />
           </button>
 
           <button
             onClick={nextProject}
-            className={`absolute ${isRTL ? 'start-0 -translate-x-4' : 'end-0 translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
+            className={`absolute ${isRTL ? 'start-2 sm:start-0 sm:-translate-x-4' : 'end-2 sm:end-0 sm:translate-x-4'} top-1/2 -translate-y-1/2 z-10 p-2 sm:p-3 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 group`}
             disabled={projects.length <= 1}
           >
-            <ArrowRight className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-blue-400 transition-colors" />
           </button>
 
           {/* Project Cards */}
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-2xl mx-8 sm:mx-0">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
