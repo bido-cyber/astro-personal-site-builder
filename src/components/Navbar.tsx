@@ -1,8 +1,7 @@
-
-import React, { useState, useEffect } from 'react';
-import { Earth } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
-import navData from '../data/nav.json';
+import React, { useState, useEffect } from "react";
+import { Earth } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
+import navData from "../data/nav.json";
 
 export function Navbar() {
   const { language, setLanguage, isRTL } = useLanguage();
@@ -16,31 +15,31 @@ export function Navbar() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/10 backdrop-blur-md shadow-lg border-b border-white/20' 
-        : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-transparent" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a 
-              href="/" 
+            <a
+              href="/"
               className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
             >
               JD
@@ -55,7 +54,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => {
-                    if (item.href.startsWith('#')) {
+                    if (item.href.startsWith("#")) {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }
@@ -72,11 +71,11 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             {/* Language Toggle */}
             <button
-              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+              onClick={() => setLanguage(language === "en" ? "ar" : "en")}
               className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors text-sm font-medium border border-white/20"
             >
               <Earth className="w-4 h-4" />
-              <span>{language === 'en' ? 'AR' : 'EN'}</span>
+              <span>{language === "en" ? "AR" : "EN"}</span>
             </button>
 
             {/* Mobile menu button */}
@@ -86,9 +85,21 @@ export function Navbar() {
                 className="p-2 rounded-lg bg-white/10 text-white border border-white/20"
               >
                 <div className="w-6 h-6 flex flex-col justify-center items-center">
-                  <span className={`bg-current h-0.5 w-6 transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-0.5' : ''}`}></span>
-                  <span className={`bg-current h-0.5 w-6 my-1 transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                  <span className={`bg-current h-0.5 w-6 transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-0.5' : ''}`}></span>
+                  <span
+                    className={`bg-current h-0.5 w-6 transition-all ${
+                      isMobileMenuOpen ? "rotate-45 translate-y-0.5" : ""
+                    }`}
+                  ></span>
+                  <span
+                    className={`bg-current h-0.5 w-6 my-1 transition-all ${
+                      isMobileMenuOpen ? "opacity-0" : ""
+                    }`}
+                  ></span>
+                  <span
+                    className={`bg-current h-0.5 w-6 transition-all ${
+                      isMobileMenuOpen ? "-rotate-45 -translate-y-0.5" : ""
+                    }`}
+                  ></span>
                 </div>
               </button>
             </div>
@@ -104,7 +115,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => {
-                    if (item.href.startsWith('#')) {
+                    if (item.href.startsWith("#")) {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }
