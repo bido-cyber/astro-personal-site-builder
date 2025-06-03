@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 
 interface SEOProps {
@@ -22,12 +21,13 @@ export const useSEO = ({
   author,
   publishedTime,
   modifiedTime,
-  tags = []
+  tags = [],
 }: SEOProps) => {
   useEffect(() => {
-    const baseUrl = 'https://bido-cyber.github.io/blog';
+    const baseUrl = 'https://bido-cyber.github.io';
     const defaultTitle = 'John Doe - Full Stack Developer Portfolio';
-    const defaultDescription = 'Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and more.';
+    const defaultDescription =
+      'Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and more.';
     const defaultImage = `${baseUrl}/og-image.jpg`;
 
     // Update title
@@ -35,9 +35,10 @@ export const useSEO = ({
 
     // Update meta tags
     const updateMetaTag = (property: string, content: string) => {
-      let element = document.querySelector(`meta[property="${property}"]`) ||
-                   document.querySelector(`meta[name="${property}"]`);
-      
+      let element =
+        document.querySelector(`meta[property="${property}"]`) ||
+        document.querySelector(`meta[name="${property}"]`);
+
       if (!element) {
         element = document.createElement('meta');
         if (property.startsWith('og:') || property.startsWith('twitter:')) {
@@ -52,20 +53,25 @@ export const useSEO = ({
 
     // Basic SEO
     updateMetaTag('description', description || defaultDescription);
-    updateMetaTag('keywords', tags.length > 0 ? tags.join(', ') : 'full stack developer, web development, JavaScript, React, Node.js');
-    
+    updateMetaTag(
+      'keywords',
+      tags.length > 0
+        ? tags.join(', ')
+        : 'full stack developer, web development, JavaScript, React, Node.js'
+    );
+
     // Open Graph
     updateMetaTag('og:title', title || defaultTitle);
     updateMetaTag('og:description', description || defaultDescription);
     updateMetaTag('og:image', image || defaultImage);
     updateMetaTag('og:url', url || baseUrl);
     updateMetaTag('og:type', type);
-    
+
     // Twitter
     updateMetaTag('twitter:title', title || defaultTitle);
     updateMetaTag('twitter:description', description || defaultDescription);
     updateMetaTag('twitter:image', image || defaultImage);
-    
+
     // Article specific
     if (type === 'article') {
       if (author) updateMetaTag('article:author', author);
@@ -92,6 +98,5 @@ export const useSEO = ({
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', url || baseUrl);
-
   }, [title, description, image, url, type, author, publishedTime, modifiedTime, tags]);
 };

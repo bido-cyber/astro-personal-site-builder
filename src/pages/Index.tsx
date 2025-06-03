@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { StarryBackground } from '../components/StarryBackground';
@@ -16,11 +15,19 @@ import { useSEO } from '../hooks/useSEO';
 function IndexContent() {
   useSEO({
     title: 'John Doe - Full Stack Developer Portfolio',
-    description: 'Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and more.',
-    image: 'https://bido-cyber.github.io/blog/og-image.jpg',
-    url: 'https://bido-cyber.github.io/blog/',
+    description:
+      'Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and more.',
+    image: 'https://bido-cyber.github.io/og-image.jpg',
+    url: 'https://bido-cyber.github.io/',
     type: 'website',
-    tags: ['full stack developer', 'web development', 'JavaScript', 'React', 'Node.js', 'portfolio']
+    tags: [
+      'full stack developer',
+      'web development',
+      'JavaScript',
+      'React',
+      'Node.js',
+      'portfolio',
+    ],
   });
 
   return (

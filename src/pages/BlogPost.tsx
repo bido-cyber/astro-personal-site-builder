@@ -28,11 +28,11 @@ function BlogPostContent() {
     title: postTitle,
     description: `Read "${postTitle}" on John Doe's blog. Insights about web development, programming, and technology.`,
     image: `https://picsum.photos/1200/630?random=${slug}`,
-    url: `https://bido-cyber.github.io/blog/#/blog/${slug}`,
+    url: `https://bido-cyber.github.io/#/blog/${slug}`,
     type: 'article',
     author: 'John Doe',
     publishedTime: new Date().toISOString(),
-    tags: ['web development', 'programming', 'technology', 'blog']
+    tags: ['web development', 'programming', 'technology', 'blog'],
   });
 
   useEffect(() => {

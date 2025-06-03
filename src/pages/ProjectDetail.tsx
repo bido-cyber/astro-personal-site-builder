@@ -24,12 +24,14 @@ function ProjectDetailContent() {
   // SEO for project detail
   useSEO({
     title: project?.name,
-    description: project?.summary || `Explore the ${project?.name} project by John Doe. Built with ${project?.tech.join(', ')}.`,
+    description:
+      project?.summary ||
+      `Explore the ${project?.name} project by John Doe. Built with ${project?.tech.join(', ')}.`,
     image: project?.cover || `https://picsum.photos/1200/630?random=${slug}`,
-    url: `https://bido-cyber.github.io/blog/#/projects/${slug}`,
+    url: `https://bido-cyber.github.io/#/projects/${slug}`,
     type: 'article',
     author: 'John Doe',
-    tags: project?.tech || ['web development', 'programming']
+    tags: project?.tech || ['web development', 'programming'],
   });
 
   useEffect(() => {
