@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
@@ -19,5 +18,4 @@ export default defineConfig(({ command, mode }) => ({
     outDir: 'dist',
     sourcemap: true,
   },
-  base: '/blog/', // Add base path for GitHub Pages
 }));
