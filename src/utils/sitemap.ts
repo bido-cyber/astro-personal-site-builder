@@ -1,5 +1,5 @@
 export const generateSitemap = () => {
-  const baseUrl = 'https://bido-cyber.github.io/astro-personal-site-builder';
+  const baseUrl = 'https://bido-cyber.github.io';
   const currentDate = new Date().toISOString().split('T')[0];
 
   const staticPages = [
